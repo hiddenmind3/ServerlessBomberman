@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[2.15.0, )"
             },
+            "Microsoft.Azure.WebJobs.Extensions.CosmosDB": {
+              "target": "Package",
+              "version": "[3.0.10, )"
+            },
             "Microsoft.Azure.WebJobs.Extensions.DurableTask": {
               "target": "Package",
               "version": "[2.1.1, )"

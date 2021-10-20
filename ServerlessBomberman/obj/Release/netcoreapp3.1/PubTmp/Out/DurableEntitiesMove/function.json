@@ -6,7 +6,8 @@
       "type": "httpTrigger",
       "route": "move/{entityKey}/{dist}",
       "methods": [
-        "get"
+        "get",
+        "post"
       ],
       "authLevel": "anonymous",
       "name": "req"

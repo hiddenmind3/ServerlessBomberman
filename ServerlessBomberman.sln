@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessBomberman", "ServerlessBomberman\ServerlessBomberman.csproj", "{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBomberman", "ServerlessBomberman\ServerlessBomberman.csproj", "{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalApp", "LocalApp\LocalApp.csproj", "{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}"
 EndProject
