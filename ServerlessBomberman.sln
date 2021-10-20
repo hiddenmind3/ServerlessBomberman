@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessBomberman", "ServerlessBomberman\ServerlessBomberman.csproj", "{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalApp", "LocalApp\LocalApp.csproj", "{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A16564B9-B38E-428C-B20A-FAC20146D7BD}
+	EndGlobalSection
+EndGlobal
