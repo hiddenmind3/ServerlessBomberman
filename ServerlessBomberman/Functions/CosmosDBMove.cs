@@ -27,28 +27,26 @@ namespace ServerlessBomberman.Functions
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
+            string id = req.Query["id"];
+
             string distQuery = req.Query["dist"];
             int dist = int.Parse(distQuery);
 
-            string id = req.Query["id"];
-
             if (game == null)
             {
-                log.LogInformation($"ToDo item not found");
-                game = new Game();
-                game.New(0, id);
+                game = new Game(0, id);
+                log.LogInformation($"Document not found. New Document created");
             }
             else
             {
-                log.LogInformation($"Found game, Position={game.Position}");
+                log.LogInformation($"Found Document, Id:{game.id}, Position={game.position}");
             }
 
             game.Move(dist);
-            var currentPosition = game.Position;
 
             await gameOut.AddAsync(game);
 
-            return new OkObjectResult(currentPosition);
+            return new OkObjectResult(game);
         }
     }
 }

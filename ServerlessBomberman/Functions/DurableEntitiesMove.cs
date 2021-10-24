@@ -32,7 +32,7 @@ namespace ServerlessBomberman.Functions
 
             var entityId = new EntityId(nameof(Game), entityKey);
 
-            await client.SignalEntityAsync<IGame>(entityId, game => game.New(0, "id"));
+            await client.SignalEntityAsync<IGame>(entityId, game => new Game(0, "testId"));
 
             await client.SignalEntityAsync<IGame>(entityId, game => game.Move(distInt));
 
