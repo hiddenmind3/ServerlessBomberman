@@ -11,14 +11,16 @@ namespace ServerlessBomberman.Model
     public class Game : IGame
     {
         public int Position { get; set; }
+        public string id { get; set; }
 
         public void Move(int dist)
         {
             this.Position += dist;
         }
 
-        public void New(int startPosition)
+        public void New(int startPosition, string startId)
         {
+            id = startId;
             Position = startPosition;
         }
 

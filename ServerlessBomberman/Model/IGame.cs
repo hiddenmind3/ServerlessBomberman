@@ -8,7 +8,7 @@ namespace ServerlessBomberman.Model
     interface IGame
     {
         void Move(int dist);
-        void New(int startPosition);
+        void New(int startPosition, string startId);
 
         /*
         Task Reset();
