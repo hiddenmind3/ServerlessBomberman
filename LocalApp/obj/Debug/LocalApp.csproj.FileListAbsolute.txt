@@ -12,3 +12,10 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Deb
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.csproj.CoreCompileInputs.cache
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.exe
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.pdb
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\bin\Debug\LocalApp.exe.config
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\bin\Debug\LocalApp.exe
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\bin\Debug\LocalApp.pdb
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.csproj.AssemblyReference.cache
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.csproj.CoreCompileInputs.cache
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.exe
+C:\Users\hirsc\OneDrive\Documents\Code\ServerlessBomberman\LocalApp\obj\Debug\LocalApp.pdb

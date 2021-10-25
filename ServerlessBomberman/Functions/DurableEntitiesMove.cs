@@ -1,25 +1,20 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Newtonsoft.Json.Linq;
 using ServerlessBomberman.Model;
 using System.Net.Http;
-using System.Net;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace ServerlessBomberman.Functions
 {
     public static class DurableEntitiesMove
     {
         [FunctionName("DurableEntitiesMove")]
-        public static async Task<HttpResponseMessage> Run(
+        public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "move/{entityKey}/{dist}")] HttpRequestMessage req,
             [DurableClient] IDurableEntityClient client,
             string entityKey,
@@ -30,15 +25,15 @@ namespace ServerlessBomberman.Functions
 
             int distInt = int.Parse(dist);
 
-            var entityId = new EntityId(nameof(Game), entityKey);
+            var entityId = new EntityId(nameof(EntityGame), entityKey);
 
-            await client.SignalEntityAsync<IGame>(entityId, game => new Game(0, "testId"));
+            await client.SignalEntityAsync<IEntityGame>(entityId, game => game.Move(distInt));
 
-            await client.SignalEntityAsync<IGame>(entityId, game => game.Move(distInt));
+            Thread.Sleep(1000);
 
-            var state = await client.ReadEntityStateAsync<Game>(entityId);
+            var state = await client.ReadEntityStateAsync<EntityGame>(entityId);
 
-            return req.CreateResponse(state);
+            return new OkObjectResult(state);
         }
     }
 }

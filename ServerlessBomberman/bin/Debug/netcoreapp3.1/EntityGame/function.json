@@ -3,11 +3,11 @@
   "configurationSource": "attributes",
   "bindings": [
     {
-      "type": "orchestrationTrigger",
-      "name": "context"
+      "type": "entityTrigger",
+      "name": "ctx"
     }
   ],
   "disabled": false,
   "scriptFile": "../bin/ServerlessBomberman.dll",
-  "entryPoint": "ServerlessBomberman.Functions.DurableMove.RunOrchestrator"
+  "entryPoint": "ServerlessBomberman.Model.EntityGame.Run"
 }
