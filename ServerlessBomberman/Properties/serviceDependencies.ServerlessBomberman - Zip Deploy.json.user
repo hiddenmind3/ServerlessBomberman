@@ -2,11 +2,7 @@
   "dependencies": {
     "storage1": {
       "restored": true,
-      "restoreTime": "2021-10-19T08:39:25.6729255Z"
-    },
-    "appInsights1": {
-      "restored": true,
-      "restoreTime": "2021-10-19T12:33:56.810856Z"
+      "restoreTime": "2021-10-25T11:03:13.9345121Z"
     }
   },
   "parameters": {
@@ -15,20 +11,10 @@
       "Type": "resourceGroup",
       "Value": "DefaultResourceGroup-CHN"
     },
-    "appInsights1.subscriptionId": {
-      "Name": "appInsights1.subscriptionId",
-      "Type": "subscription",
-      "Value": "4907a75d-2983-4db5-a196-34deab870cd5"
-    },
     "storage1.subscriptionId": {
       "Name": "storage1.subscriptionId",
       "Type": "subscription",
       "Value": "4907a75d-2983-4db5-a196-34deab870cd5"
-    },
-    "appInsights1.resourceGroupName": {
-      "Name": "appInsights1.resourceGroupName",
-      "Type": "resourceGroup",
-      "Value": "DefaultResourceGroup-CHN"
     }
   }
 }
