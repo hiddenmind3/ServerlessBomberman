@@ -1,0 +1,13 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions-3.0.11",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "orchestrationTrigger",
+      "name": "context"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/ServerlessBomberman.dll",
+  "entryPoint": "ServerlessBomberman.Functions.DurableEntitiesWithOrchestrationMove.RunOrchestrator"
+}

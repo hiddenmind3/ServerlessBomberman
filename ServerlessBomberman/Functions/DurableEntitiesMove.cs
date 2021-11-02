@@ -29,8 +29,6 @@ namespace ServerlessBomberman.Functions
 
             await client.SignalEntityAsync<IEntityGame>(entityId, game => game.Move(distInt));
 
-            Thread.Sleep(1000);
-
             var state = await client.ReadEntityStateAsync<EntityGame>(entityId);
 
             return new OkObjectResult(state);

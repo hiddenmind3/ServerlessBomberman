@@ -1,0 +1,7 @@
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\bin\Release\LocalApp.exe.config
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\bin\Release\LocalApp.exe
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\bin\Release\LocalApp.pdb
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Release\LocalApp.csproj.AssemblyReference.cache
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Release\LocalApp.csproj.CoreCompileInputs.cache
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Release\LocalApp.exe
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalApp\obj\Release\LocalApp.pdb
