@@ -4,8 +4,9 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    interface IGame
+    class Input
     {
-        public void ProcessInput(Input input);
+        public String PlayerName { get; }
+        public InputEnum PlayerInput { get; }
     }
 }

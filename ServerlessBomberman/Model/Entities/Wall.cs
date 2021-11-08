@@ -4,8 +4,7 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    interface IGame
+    class Wall : Entity
     {
-        public void ProcessInput(Input input);
     }
 }

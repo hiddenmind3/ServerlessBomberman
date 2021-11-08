@@ -4,8 +4,12 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    interface IGame
+    enum InputEnum
     {
-        public void ProcessInput(Input input);
+        Up,
+        Down,
+        Left,
+        Right,
+        Bomb
     }
 }
