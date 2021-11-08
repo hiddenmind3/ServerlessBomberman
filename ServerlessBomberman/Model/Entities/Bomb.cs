@@ -4,12 +4,8 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Bomb : Entity
+    class Bomb : TemporaryEntity
     {
-        public int Timer { get; }
-        public Bomb()
-        {
-            Timer = 5;
-        }
+        
     }
 }
