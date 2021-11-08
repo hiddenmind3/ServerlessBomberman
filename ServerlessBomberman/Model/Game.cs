@@ -11,14 +11,7 @@ namespace ServerlessBomberman.Model
 
         public void ProcessInput(Input input)
         {
-            Player currentPlayer = null;
-            foreach(Player player in players)
-            {
-                if (input.PlayerName == player.Name)
-                {
-                    currentPlayer = player;
-                }
-            }
+            Player currentPlayer = getCurrentPlayer(input.PlayerName);
 
             if (currentPlayer == null)
             {
@@ -28,33 +21,37 @@ namespace ServerlessBomberman.Model
             switch (input.PlayerInput)
             {
                 case InputEnum.Up:
-                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition+1))
-                    {
+                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition + 1)) 
                         currentPlayer.YPosition += 1;
-                    }
-                    break;
+                break;
                 case InputEnum.Down:
                     if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition-1))
-                    {
                         currentPlayer.YPosition -= 1;
-                    }
-                    break;
+                break;
                 case InputEnum.Left:
                     if (CheckIfPositionFree(currentPlayer.XPosition-1, currentPlayer.YPosition))
-                    {
                         currentPlayer.XPosition -= 1;
-                    }
-                    break;
+                break;
                 case InputEnum.Right:
                     if (CheckIfPositionFree(currentPlayer.XPosition+1, currentPlayer.YPosition))
-                    {
                         currentPlayer.XPosition += 1;
-                    }
-                    break;
+                break;
                 case InputEnum.Bomb:
                     PlaceBomb(currentPlayer.XPosition, currentPlayer.YPosition);
-                    break;
+                break;
             }
+        }
+
+        private Player getCurrentPlayer(string playerName)
+        {
+            foreach (Player player in players)
+            {
+                if (playerName == player.Name)
+                {
+                    return player;
+                }
+            }
+            return null;
         }
 
         private void PlaceBomb(int xPosition, int yPosition)
