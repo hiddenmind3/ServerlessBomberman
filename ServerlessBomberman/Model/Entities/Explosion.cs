@@ -4,9 +4,7 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Input
+    class Explosion : Entity
     {
-        public String PlayerName { get; }
-        public InputEnum PlayerInput { get; }
     }
 }

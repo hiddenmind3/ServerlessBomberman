@@ -4,9 +4,12 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Input
+    enum InputEnum
     {
-        public String PlayerName { get; }
-        public InputEnum PlayerInput { get; }
+        Up,
+        Down,
+        Left,
+        Right,
+        Bomb
     }
 }
