@@ -11,9 +11,11 @@ namespace ServerlessBomberman.Model
 
         public void ProcessInput(Input input)
         {
+            if (map == null) ResetMap();
+            
             Player currentPlayer = getCurrentPlayer(input.PlayerName);
 
-            if (currentPlayer == null)
+            if(currentPlayer == null)
             {
                 return;
             }
@@ -42,6 +44,18 @@ namespace ServerlessBomberman.Model
             }
         }
 
+        private void ResetMap()
+        {
+            map = new Entity[7][] {
+                new Entity[7]{ new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), null, null, null, null, null, new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), new BreakableWall(), new UnbreakableWall(), null, new UnbreakableWall(), new BreakableWall(), new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), null, null, new BreakableWall(), null, null, new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), new BreakableWall(), new UnbreakableWall(), null, new UnbreakableWall(), new BreakableWall(), new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), null, null, null, null, null, new UnbreakableWall()},
+                new Entity[7]{ new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall()} };
+        }
+
         private Player getCurrentPlayer(string playerName)
         {
             foreach (Player player in players)
@@ -51,7 +65,31 @@ namespace ServerlessBomberman.Model
                     return player;
                 }
             }
+
+            (int, int) freeStartPosition = getFreePosition();
+
+            if(freeStartPosition != (-1,-1))
+            {
+                return new Player(playerName, freeStartPosition.Item1, freeStartPosition.Item2);
+            }
+
             return null;
+        }
+
+        private (int,int) getFreePosition()
+        {
+            for(int x = 0; x < map.Length; x++)
+            {
+                for(int y = 0; y < map[0].Length; y++)
+                {
+                    if(map[x][y] == null)
+                    {
+                        return (x, y);
+                    }
+                }
+            }
+
+            return (-1,-1);
         }
 
         private void PlaceBomb(int xPosition, int yPosition)
