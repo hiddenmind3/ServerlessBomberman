@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,9 +11,15 @@ namespace ServerlessBomberman.Model
         public EntityEnum[][] Map { get; set; }
         public List<Player> Players { get; set; }
 
+        public void Reset()
+        {
+            ResetMap();
+            ResetPlayers();
+        }
+
         public void ProcessInput(Input input)
         {
-            if (Map == null) ResetMap();
+            if (Map == null || Players == null) Reset();
             
             Player currentPlayer = GetCurrentPlayer(input.PlayerName);
 
@@ -47,6 +52,11 @@ namespace ServerlessBomberman.Model
             }
         }
 
+        private void ResetPlayers()
+        {
+            Players = new List<Player>();
+        }
+
         private void ResetMap()
         {
             Map = new EntityEnum[7][] {
@@ -61,11 +71,6 @@ namespace ServerlessBomberman.Model
 
         private Player GetCurrentPlayer(string playerName)
         {
-            if(Players == null)
-            {
-                Players = new List<Player>();
-            }
-
             foreach (Player player in Players)
             {
                 if (playerName == player.Name)
@@ -84,7 +89,7 @@ namespace ServerlessBomberman.Model
                 return newPlayer;
             }
 
-            return new Player();
+            return null;
         }
 
         private (int,int) GetFreePosition()

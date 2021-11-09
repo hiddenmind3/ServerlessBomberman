@@ -21,17 +21,11 @@ namespace ServerlessBomberman.Functions
             String gameKey,
             ILogger log)
         {
-            log.LogInformation("Started GameInputFunction");
-
             var gameId = new EntityId(nameof(Game), gameKey);
-
-            log.LogInformation("Created gameId");
 
             var content = await req.Content.ReadAsStringAsync();
 
             Input input = JsonConvert.DeserializeObject<Input>(content);
-
-            log.LogInformation("Deserialized the Content");
 
             await client.SignalEntityAsync<IGame>(gameId, game => game.ProcessInput(input));
 

@@ -8,5 +8,6 @@ namespace ServerlessBomberman.Model
     public interface IGame
     {
         public void ProcessInput(Input input);
+        public void Reset();
     }
 }
