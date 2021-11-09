@@ -1,19 +1,22 @@
-﻿using System;
+﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace ServerlessBomberman.Model
 {
-    class Game : IGame
+    public class Game : IGame
     {
-        private Entity[][] map;
-        private Player[] players;
+        public EntityEnum[][] Map { get; set; }
+        public List<Player> Players { get; set; }
 
         public void ProcessInput(Input input)
         {
-            if (map == null) ResetMap();
+            if (Map == null) ResetMap();
             
-            Player currentPlayer = getCurrentPlayer(input.PlayerName);
+            Player currentPlayer = GetCurrentPlayer(input.PlayerName);
 
             if(currentPlayer == null)
             {
@@ -23,12 +26,12 @@ namespace ServerlessBomberman.Model
             switch (input.PlayerInput)
             {
                 case InputEnum.Up:
-                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition + 1)) 
-                        currentPlayer.YPosition += 1;
+                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition-1)) 
+                        currentPlayer.YPosition -= 1;
                 break;
                 case InputEnum.Down:
-                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition-1))
-                        currentPlayer.YPosition -= 1;
+                    if (CheckIfPositionFree(currentPlayer.XPosition, currentPlayer.YPosition+1))
+                        currentPlayer.YPosition += 1;
                 break;
                 case InputEnum.Left:
                     if (CheckIfPositionFree(currentPlayer.XPosition-1, currentPlayer.YPosition))
@@ -46,19 +49,24 @@ namespace ServerlessBomberman.Model
 
         private void ResetMap()
         {
-            map = new Entity[7][] {
-                new Entity[7]{ new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), null, null, null, null, null, new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), new BreakableWall(), new UnbreakableWall(), null, new UnbreakableWall(), new BreakableWall(), new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), null, null, new BreakableWall(), null, null, new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), new BreakableWall(), new UnbreakableWall(), null, new UnbreakableWall(), new BreakableWall(), new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), null, null, null, null, null, new UnbreakableWall()},
-                new Entity[7]{ new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall()} };
+            Map = new EntityEnum[7][] {
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.BreakableWall, EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.UnbreakableWall, EntityEnum.BreakableWall, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.BreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.BreakableWall, EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.UnbreakableWall, EntityEnum.BreakableWall, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.empty, EntityEnum.UnbreakableWall},
+                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall} };
         }
 
-        private Player getCurrentPlayer(string playerName)
+        private Player GetCurrentPlayer(string playerName)
         {
-            foreach (Player player in players)
+            if(Players == null)
+            {
+                Players = new List<Player>();
+            }
+
+            foreach (Player player in Players)
             {
                 if (playerName == player.Name)
                 {
@@ -66,23 +74,26 @@ namespace ServerlessBomberman.Model
                 }
             }
 
-            (int, int) freeStartPosition = getFreePosition();
+            
+            (int, int) freeStartPosition = GetFreePosition();
 
-            if(freeStartPosition != (-1,-1))
+            if (freeStartPosition != (-1, -1))
             {
-                return new Player(playerName, freeStartPosition.Item1, freeStartPosition.Item2);
+                var newPlayer = new Player(playerName, freeStartPosition.Item1, freeStartPosition.Item2);
+                Players.Add(newPlayer);
+                return newPlayer;
             }
 
-            return null;
+            return new Player();
         }
 
-        private (int,int) getFreePosition()
+        private (int,int) GetFreePosition()
         {
-            for(int x = 0; x < map.Length; x++)
+            for(int x = 0; x < Map.Length; x++)
             {
-                for(int y = 0; y < map[0].Length; y++)
+                for(int y = 0; y < Map[0].Length; y++)
                 {
-                    if(map[x][y] == null)
+                    if(Map[x][y] == EntityEnum.empty)
                     {
                         return (x, y);
                     }
@@ -94,16 +105,20 @@ namespace ServerlessBomberman.Model
 
         private void PlaceBomb(int xPosition, int yPosition)
         {
-            map[xPosition][yPosition] = new Bomb();
+            Map[xPosition][yPosition] = EntityEnum.Bomb;
         }
 
         private bool CheckIfPositionFree(int xPosition, int yPosition)
         {
-            if(map[xPosition][yPosition] != null)
+            if(Map[xPosition][yPosition] == EntityEnum.empty)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
+
+        [FunctionName(nameof(Game))]
+        public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+            => ctx.DispatchAsync<Game>();
     }
 }

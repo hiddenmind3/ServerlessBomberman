@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace ServerlessBomberman.Model
 {
-    class Input
+    public class Input
     {
-        public String PlayerName { get; }
-        public InputEnum PlayerInput { get; }
+        public InputEnum PlayerInput { get; set; }
+        public String PlayerName { get; set; }
+
+        public Input(String playerName, InputEnum playerInput)
+        {
+            PlayerName = playerName;
+            PlayerInput = playerInput;
+        }
+
+        public Input()
+        {
+
+        }
     }
 }

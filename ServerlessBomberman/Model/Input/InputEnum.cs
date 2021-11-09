@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    enum InputEnum
+    public enum InputEnum
     {
         Up,
         Down,

@@ -11,7 +11,7 @@ namespace ServerlessBomberman.LocalApp
 {
     class FunctionCaller
     {
-        private static int n = 100;
+        private static readonly int n = 100;
 
         static void Main(string[] args)
         {

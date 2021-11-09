@@ -4,15 +4,14 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Player
+    public class Player
     {
-        public String Name { get; }
+        public String Name { get; set; }
         public int XPosition { get; set; }
         public int YPosition { get; set; }
 
-        public Player(String name)
+        public Player()
         {
-            Name = name;
         }
 
         public Player(String name, int xPosition, int yPosition)

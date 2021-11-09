@@ -14,9 +14,9 @@ namespace ServerlessBomberman.Functions
     {
         [FunctionName("GetGameStateFunction")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getgamestate/{entityKey}")] HttpRequestMessage req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getgamestate/{gameKey}")] HttpRequestMessage req,
             [DurableClient] IDurableEntityClient client,
-            String gameKey,
+            string gameKey,
             ILogger log)
         {
             var gameId = new EntityId(nameof(Game), gameKey);
