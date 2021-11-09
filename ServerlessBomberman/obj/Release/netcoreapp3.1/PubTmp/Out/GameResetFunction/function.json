@@ -6,7 +6,7 @@
       "type": "httpTrigger",
       "route": "reset/{gameKey}",
       "methods": [
-        "post"
+        "get"
       ],
       "authLevel": "anonymous",
       "name": "req"

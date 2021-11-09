@@ -17,7 +17,7 @@ namespace ServerlessBomberman.Functions
     {
         [FunctionName("GameResetFunction")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "reset/{gameKey}")] HttpRequestMessage req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "reset/{gameKey}")] HttpRequestMessage req,
             [DurableClient] IDurableEntityClient client,
             String gameKey,
             ILogger log)
