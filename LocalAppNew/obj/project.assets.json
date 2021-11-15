@@ -9651,9 +9651,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalAppNew.csproj",
-      "projectName": "LocalAppNew",
-      "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalAppNew.csproj",
+      "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
+      "projectName": "LocalApp",
+      "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
       "packagesPath": "C:\\Users\\R.N\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\obj\\",
       "projectStyle": "PackageReference",

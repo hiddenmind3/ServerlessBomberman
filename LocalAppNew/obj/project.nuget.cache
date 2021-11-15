@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aFIlLCbvbAz/V4zGbU+kXP63BJslKg4tHTpx3ck4nC2KoiWXIbJEazEgeB3Db2+jr+FNIb53cqyt7CN/xOfH8Q==",
+  "dgSpecHash": "YFOiqdfMGjUl4CZ8jCK3aJUgZtXdaE6B3mUy6S80kNit4FXAC6C5NvEkPlFciPkbmj3C24hvBgN697QL3mRhmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalAppNew.csproj",
+  "projectFilePath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\R.N\\.nuget\\packages\\dynamitey\\2.0.9.136\\dynamitey.2.0.9.136.nupkg.sha512",
     "C:\\Users\\R.N\\.nuget\\packages\\impromptuinterface\\7.0.1\\impromptuinterface.7.0.1.nupkg.sha512",

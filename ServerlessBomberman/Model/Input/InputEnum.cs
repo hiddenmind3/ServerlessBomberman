@@ -10,6 +10,7 @@ namespace ServerlessBomberman.Model
         Down,
         Left,
         Right,
-        Bomb
+        Bomb,
+        None
     }
 }

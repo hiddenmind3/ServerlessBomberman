@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace LocalAppNew
         private SolidBrush WallBrush = new SolidBrush(Color.Black);
         private SolidBrush BreakableWallBrush = new SolidBrush(Color.Gray);
         private SolidBrush EmptyBrush = new SolidBrush(Color.White);
-
+        private static Boolean gameIsRunning = true;
         private Rectangle[] rectPlayer;
         private Rectangle[,] rectMap;
 
@@ -26,15 +27,22 @@ namespace LocalAppNew
 
         private String gameKey = "testKey";
         private String playerKey = "playerKey";
-
+        private CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationToken cancellationToken;
         private Game game = new Game();
         private HttpClient client;
 
+        private long startTime = 0;
+
         public Form1()
         {
+            startTime = DateTime.Now.Ticks;
+        
+            cancellationToken = cts.Token;
+
             game.ResetMap();
             client = new HttpClient();
-            _ = getInfo(serverURL + "reset/" + gameKey);
+            resetGameOnServer();
 
             game.Players = new List<Player>();
             game.Players.Add(new Player(playerKey, 1, 1));
@@ -53,6 +61,11 @@ namespace LocalAppNew
             {
                 rectPlayer[i] = new Rectangle(i * rectWidth, i * rectHeight, rectWidth, rectHeight);
             }
+            putInfo(serverURL + "input/" + gameKey, JsonConvert.SerializeObject(new Input(playerKey, InputEnum.None)));
+            RT(() => {
+                getGameStateFromServer();
+                Invalidate();
+            }, 25, cancellationToken);
         }
 
         private async void putInfo(String url, String message)
@@ -60,20 +73,25 @@ namespace LocalAppNew
             _ = await client.PostAsync(url, new StringContent(message, Encoding.UTF8, "application/json"));
         }
 
-        private async Task<string> getInfo(String url)
+        private async void resetGameOnServer()
         {
-            var response = await client.GetAsync(url);
+            var response = await client.GetAsync(serverURL + "reset/" + gameKey);
+        }
+        private async void getGameStateFromServer()
+        {
+            var response = await client.GetAsync(serverURL + "getgamestate/" + gameKey);
 
-            String gameJsonString = await response.Content.ReadAsStringAsync();
+            String jgame = await response.Content.ReadAsStringAsync();
 
-            return gameJsonString;
+            game = JsonConvert.DeserializeObject<Game>(jgame);
+            //System.Diagnostics.Debug.WriteLine(DateTime.Now.Ticks - startTime);
+
         }
 
         private void communicate(InputEnum inp)
         {
-            //putInfo(serverURL + "input/" + gameKey, JsonConvert.SerializeObject(new Input(playerKey, inp)));
-            var jgame = getInfo(serverURL + "getgamestate/" + gameKey);
-            game = JsonConvert.DeserializeObject<Game>(jgame.Result);
+            putInfo(serverURL + "input/" + gameKey, JsonConvert.SerializeObject(new Input(playerKey, inp)));
+            //getGameStateFromServer();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -175,9 +193,22 @@ namespace LocalAppNew
                     //BackColor = Color.FromName("Yellow");
                     //MessageBox.Show("You pressed the Left key.");
                 }
-                Invalidate();
                 e.Handled = true;
             }
         }
+
+
+        static void RT(Action action, int millis, CancellationToken token)
+        {
+            if (action == null)
+                return; Task.Run(async () => {
+                    while (!token.IsCancellationRequested)
+                    {
+                        action();
+                        await Task.Delay(TimeSpan.FromMilliseconds(millis), token);
+                    }
+                }, token);
+        }
+
     }
 }

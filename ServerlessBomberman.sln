@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBomberman", "ServerlessBomberman\ServerlessBomberman.csproj", "{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalAppNew", "LocalAppNew\LocalAppNew.csproj", "{35A1D93B-0905-46BB-95CB-41B5B390A8BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalApp", "LocalAppNew\LocalApp.csproj", "{35A1D93B-0905-46BB-95CB-41B5B390A8BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
