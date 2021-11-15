@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Http;
 using System.Text;
@@ -11,59 +12,68 @@ namespace LocalAppNew
 {
     public partial class Form1 : Form
     {
+        private SolidBrush PlayerBrush = new SolidBrush(Color.Blue);
+        private SolidBrush WallBrush = new SolidBrush(Color.Black);
+        private SolidBrush BreakableWallBrush = new SolidBrush(Color.Gray);
+        private SolidBrush EmptyBrush = new SolidBrush(Color.White);
+
         private Rectangle[] rectPlayer;
         private Rectangle[,] rectMap;
-        private int rectWidth = 110;
-        private int rectHeight = 110;
+
+        private int rectWidth = 111;
+        private int rectHeight = 111;
         private static String serverURL = "https://serverlessbomberman.azurewebsites.net/api/";
 
         private String gameKey = "testKey";
         private String playerKey = "playerKey";
 
         private Game game = new Game();
+        private HttpClient client;
 
         public Form1()
         {
             game.ResetMap();
-
+            client = new HttpClient();
             _ = getInfo(serverURL + "reset/" + gameKey);
 
-            game.players = new Player[] { new Player(playerKey, 1, 1)};
+            game.Players = new List<Player>();
+            game.Players.Add(new Player(playerKey, 1, 1));
+
             InitializeComponent();
-            rectMap = new Rectangle[game.map.Length, game.map[0].Length];
-            for (int i = 0; i < game.map.Length; i++)
+            rectMap = new Rectangle[game.Map.Length, game.Map[0].Length];
+            for (int i = 0; i < game.Map.Length; i++)
             {
-                for (int j = 0; j < game.map[i].Length; j++)
+                for (int j = 0; j < game.Map[i].Length; j++)
                 {
                     rectMap[i, j] = new Rectangle(i * rectWidth, j * rectHeight, rectWidth, rectHeight);
                 }
             }
             rectPlayer = new Rectangle[1];
-            for (int i = 0; i < game.players.Length; i++)
+            for (int i = 0; i < game.Players.Count; i++)
             {
                 rectPlayer[i] = new Rectangle(i * rectWidth, i * rectHeight, rectWidth, rectHeight);
             }
         }
 
+        private async void putInfo(String url, String message)
+        {
+            _ = await client.PostAsync(url, new StringContent(message, Encoding.UTF8, "application/json"));
+        }
+
         private async Task<string> getInfo(String url)
         {
-            var client = new HttpClient();
             var response = await client.GetAsync(url);
 
             String gameJsonString = await response.Content.ReadAsStringAsync();
-            return gameJsonString;
-        }
 
-        private async void putInfo(String url, String message)
-        {
-            var client = new HttpClient();
-            _ = await client.PostAsync(url, new StringContent(message, Encoding.UTF8, "application/json"));
+            return gameJsonString;
         }
 
         private void communicate(InputEnum inp)
         {
-            putInfo(serverURL + "input/" + gameKey, JsonConvert.SerializeObject(new Input(playerKey, inp)));
-            game = JsonConvert.DeserializeObject<Game>(getInfo(serverURL + "getgamestate/" + gameKey).Result);
+            //putInfo(serverURL + "input/" + gameKey, JsonConvert.SerializeObject(new Input(playerKey, inp)));
+            var jgame = getInfo(serverURL + "getgamestate/" + gameKey);
+            game = JsonConvert.DeserializeObject<Game>(jgame.Result);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -71,18 +81,14 @@ namespace LocalAppNew
             base.OnPaint(e);
 
             Graphics g = e.Graphics;
-            SolidBrush playerBrush = new SolidBrush(Color.Blue);
-            SolidBrush WallBrush = new SolidBrush(Color.Black);
-            SolidBrush BreakableWallBrush = new SolidBrush(Color.Gray);
-            SolidBrush EmptyBrush = new SolidBrush(Color.White);
 
             // draw map
-            for (int i = 0; i < game.map.Length; i++)
+            for (int i = 0; i < game.Map.Length; i++)
             {
-                for (int j = 0; j < game.map[i].Length; j++)
+                for (int j = 0; j < game.Map[i].Length; j++)
                 {
-                    Entity en = game.map[i][j];
-
+                    EntityEnum en = game.Map[i][j];
+                    
                     if (en == null)
                     {
                         g.FillRectangle(EmptyBrush, rectMap[i, j]);
@@ -90,21 +96,18 @@ namespace LocalAppNew
                     else
                     {
                         Type t = en.GetType();
-                        if (t.Equals(typeof(BreakableWall)))
+                        switch (en)
                         {
-                            g.FillRectangle(BreakableWallBrush, rectMap[i, j]);
-                        }
-                        else if (t.Equals(typeof(UnbreakableWall)))
-                        {
-                            g.FillRectangle(WallBrush, rectMap[i, j]);
-                        }
-                        else if (t.Equals(typeof(BreakableWall)))
-                        {
-                            g.FillRectangle(BreakableWallBrush, rectMap[i, j]);
-                        }
-                        else
-                        {
-                            g.FillRectangle(EmptyBrush, rectMap[i, j]);
+                            case EntityEnum.BreakableWall:
+                                g.FillRectangle(BreakableWallBrush, rectMap[i, j]);
+                                break;
+                            case EntityEnum.UnbreakableWall:
+                                g.FillRectangle(WallBrush, rectMap[i, j]);
+                                break;
+                            case EntityEnum.empty:
+                            default:
+                                g.FillRectangle(EmptyBrush, rectMap[i, j]);
+                                break;
                         }
                     }
                     g.DrawRectangle(Pens.Black, rectMap[i, j]);
@@ -112,9 +115,9 @@ namespace LocalAppNew
             }
             
             // draw players
-            for (int i = 0; i < game.players.Length; i++)
+            for (int i = 0; i < game.Players.Count; i++)
             {
-                rectPlayer[i] = new Rectangle(game.players[i].XPosition * rectWidth, game.players[i].YPosition * rectHeight, rectWidth, rectHeight);
+                rectPlayer[i] = new Rectangle(game.Players[i].XPosition * rectWidth, game.Players[i].YPosition * rectHeight, rectWidth, rectHeight);
 
                 if (rectPlayer == null || rectPlayer[i] == null)
                 {
@@ -134,7 +137,7 @@ namespace LocalAppNew
                     }
 
                     g.DrawRectangle(Pens.Green, rectPlayer[i]);
-                    g.FillRectangle(playerBrush, rectPlayer[i]);
+                    g.FillRectangle(PlayerBrush, rectPlayer[i]);
                 }
             }
         }
