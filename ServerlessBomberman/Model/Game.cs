@@ -4,10 +4,11 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Game : IGame
+    public class Game : IGame
     {
-        private Entity[][] map;
-        private Player[] players;
+        public Entity[][] map { get; set; }
+        public Player[] players { get; set; }
+
 
         public void ProcessInput(Input input)
         {
@@ -44,7 +45,7 @@ namespace ServerlessBomberman.Model
             }
         }
 
-        private void ResetMap()
+        public void ResetMap()
         {
             map = new Entity[7][] {
                 new Entity[7]{ new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall(), new UnbreakableWall()},

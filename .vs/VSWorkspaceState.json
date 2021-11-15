@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\LocalApp",
-    "\\LocalApp\\LocalApp"
+    "\\LocalApp\\LocalApp",
+    "\\ServerlessBomberman",
+    "\\ServerlessBomberman\\Functions",
+    "\\ServerlessBomberman\\Model",
+    "\\ServerlessBomberman\\Model\\Input"
   ],
-  "SelectedNode": "\\LocalApp\\LocalApp\\FunctionCaller.cs",
   "PreviewInSolutionExplorer": false
 }

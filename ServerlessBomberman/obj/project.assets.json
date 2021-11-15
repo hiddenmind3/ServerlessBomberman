@@ -9634,11 +9634,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\R.N\\Source\\Repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
+      "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
       "projectName": "ServerlessBomberman",
-      "projectPath": "C:\\Users\\R.N\\Source\\Repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
+      "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
       "packagesPath": "C:\\Users\\R.N\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\R.N\\Source\\Repos\\ServerlessBomberman\\ServerlessBomberman\\obj\\",
+      "outputPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\R.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9699,7 +9699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

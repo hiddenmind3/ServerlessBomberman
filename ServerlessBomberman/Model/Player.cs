@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class Player
+    public class Player
     {
         public String Name { get; }
         public int XPosition { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ServerlessBomberman.Model
 {
-    class BreakableWall : Wall
+    public class BreakableWall : Wall
     {
     }
 }

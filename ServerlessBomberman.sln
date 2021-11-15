@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBomberman", "ServerlessBomberman\ServerlessBomberman.csproj", "{6912BD69-E0A7-4258-9851-EAB2FCA4BC94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalApp", "LocalApp\LocalApp.csproj", "{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalAppOld", "LocalApp\LocalAppOld.csproj", "{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalAppNew", "LocalAppNew\LocalAppNew.csproj", "{35A1D93B-0905-46BB-95CB-41B5B390A8BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EEB2DFA-BCEB-486C-8E92-606AAFA56566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A1D93B-0905-46BB-95CB-41B5B390A8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A1D93B-0905-46BB-95CB-41B5B390A8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A1D93B-0905-46BB-95CB-41B5B390A8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A1D93B-0905-46BB-95CB-41B5B390A8BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
