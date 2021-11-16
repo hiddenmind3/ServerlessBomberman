@@ -51,10 +51,11 @@ namespace LocalAppNew
             initRectangles();
 
             putInfo(serverURLInput + gameKey, JsonConvert.SerializeObject(new Input(playerKey, InputEnum.None)));
-            
+            Thread.Sleep(500);
             RT(() => {
                 updateMap();
             }, 10);
+            
         }
 
         private void updateMap()
@@ -134,6 +135,7 @@ namespace LocalAppNew
 
         private void drawRectanglesPlayer(Graphics g)
         {
+            rectPlayer = new Rectangle[game.Players.Count];
             for (int i = 0; i < game.Players.Count; i++)
             {
                 rectPlayer[i] = new Rectangle(game.Players[i].XPosition * rectWidth, game.Players[i].YPosition * rectHeight, rectWidth, rectHeight);
