@@ -32,7 +32,7 @@ namespace LocalAppNew
         private static String serverURLGetGameState = serverURL+"getgamestate/";
 
         private String gameKey = "testKey";
-        private String playerKey = "playerKey";
+        private String playerKey = "playerKey2";
 
         private Game game = new Game();
         private HttpClient client;
@@ -146,7 +146,7 @@ namespace LocalAppNew
                 }
                 else
                 {
-                    g.FillRectangle(PlayerBrush[0], rectPlayer[i]);
+                    g.FillRectangle(PlayerBrush[i], rectPlayer[i]);
                     g.DrawRectangle(Pens.Black, rectPlayer[i]);
                 }
             }
