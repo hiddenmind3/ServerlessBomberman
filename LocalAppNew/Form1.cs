@@ -15,6 +15,8 @@ namespace LocalAppNew
     {
         private SolidBrush WallBrush = new SolidBrush(Color.Black);
         private SolidBrush BreakableWallBrush = new SolidBrush(Color.Gray);
+        private SolidBrush BombBrush = new SolidBrush(Color.Red);
+        private SolidBrush ExplosionBrush = new SolidBrush(Color.Yellow);
         private SolidBrush EmptyBrush = new SolidBrush(Color.White);
         private SolidBrush ErrorBrush = new SolidBrush(Color.Magenta);
         private SolidBrush[] PlayerBrush = new SolidBrush[] { new SolidBrush(Color.DarkBlue), new SolidBrush(Color.Blue), new SolidBrush(Color.LightBlue) };
@@ -32,7 +34,7 @@ namespace LocalAppNew
         private static String serverURLGetGameState = serverURL+"getgamestate/";
 
         private String gameKey = "testKey";
-        private String playerKey = "playerKey2";
+        private String playerKey = "playerKey";
 
         private Game game = new Game();
         private HttpClient client;
@@ -55,7 +57,6 @@ namespace LocalAppNew
             RT(() => {
                 updateMap();
             }, 10);
-            
         }
 
         private void updateMap()
@@ -174,6 +175,12 @@ namespace LocalAppNew
                             case EntityEnum.UnbreakableWall:
                                 g.FillRectangle(WallBrush, rectMap[i, j]);
                                 break;
+                            case EntityEnum.Bomb:
+                                g.FillRectangle(BombBrush, rectMap[i, j]);
+                                break;
+                            case EntityEnum.Explosion:
+                                g.FillRectangle(ExplosionBrush, rectMap[i, j]);
+                                break;
                             case EntityEnum.empty:
                             default:
                                 g.FillRectangle(EmptyBrush, rectMap[i, j]);
@@ -206,6 +213,10 @@ namespace LocalAppNew
                 else if (e.KeyCode == Keys.Left)
                 {
                     communicate(InputEnum.Left);
+                }
+                else if (e.KeyCode == Keys.Space)
+                {
+                    communicate(InputEnum.Bomb);
                 }
                 updateMap();
                 e.Handled = true;
