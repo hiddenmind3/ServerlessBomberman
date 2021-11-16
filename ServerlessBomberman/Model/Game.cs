@@ -101,7 +101,7 @@ namespace ServerlessBomberman.Model
             return null;
         }
 
-        private (int, int) GetFreeSpawnLocation()
+        public (int, int) GetFreeSpawnLocation()
         {
             for (int x = 0; x < Map.Length; x++)
             {
