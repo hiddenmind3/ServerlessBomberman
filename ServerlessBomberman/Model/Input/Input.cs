@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 
 namespace ServerlessBomberman.Model
 {
@@ -16,7 +15,6 @@ namespace ServerlessBomberman.Model
 
         public Input()
         {
-
         }
     }
 }

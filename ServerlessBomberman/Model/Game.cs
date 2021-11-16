@@ -2,6 +2,7 @@
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ServerlessBomberman.Model
@@ -30,6 +31,7 @@ namespace ServerlessBomberman.Model
 
             ProcessPlayerInput(input, currentPlayer);
         }
+
 
         private void ProcessPlayerInput(Input input, Player currentPlayer)
         {
@@ -64,7 +66,7 @@ namespace ServerlessBomberman.Model
             Players = new List<Player>();
         }
 
-        private void ResetMap()
+        public void ResetMap()
         {
             Map = new EntityEnum[7][] {
                 new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall},
@@ -86,7 +88,7 @@ namespace ServerlessBomberman.Model
                 }
             }
 
-            
+
             (int, int) freeSpawnLocation = GetFreeSpawnLocation();
 
             if (freeSpawnLocation != (-1, -1))
@@ -99,20 +101,20 @@ namespace ServerlessBomberman.Model
             return null;
         }
 
-        private (int,int) GetFreeSpawnLocation()
+        public (int, int) GetFreeSpawnLocation()
         {
-            for(int x = 0; x < Map.Length; x++)
+            for (int x = 0; x < Map.Length; x++)
             {
-                for(int y = 0; y < Map[0].Length; y++)
+                for (int y = 0; y < Map[0].Length; y++)
                 {
-                    if(Map[x][y] == EntityEnum.emptySpawn && !IsPlayerOnPosition(x,y))
+                    if (Map[x][y] == EntityEnum.emptySpawn && !IsPlayerOnPosition(x, y))
                     {
                         return (x, y);
                     }
                 }
             }
 
-            return (-1,-1);
+            return (-1, -1);
         }
 
         private bool IsPlayerOnPosition(int x, int y)
@@ -134,9 +136,8 @@ namespace ServerlessBomberman.Model
 
         private bool CheckIfPositionFree(int xPosition, int yPosition)
         {
-            if(Map[xPosition][yPosition] == EntityEnum.empty  || Map[xPosition][yPosition] == EntityEnum.emptySpawn)
+            if(Map[xPosition][yPosition] == EntityEnum.empty || Map[xPosition][yPosition] == EntityEnum.emptySpawn)
             {
-                
                 return true;
             }
             return false;
@@ -144,6 +145,6 @@ namespace ServerlessBomberman.Model
 
         [FunctionName(nameof(Game))]
         public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-            => ctx.DispatchAsync<Game>();
+                => ctx.DispatchAsync<Game>();
     }
 }

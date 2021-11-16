@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\LocalApp",
+    "\\LocalApp\\LocalApp",
+    "\\ServerlessBomberman",
+    "\\ServerlessBomberman\\Functions",
+    "\\ServerlessBomberman\\Model",
+    "\\ServerlessBomberman\\Model\\Input"
   ],
-  "SelectedNode": "\\ServerlessBomberman.sln",
   "PreviewInSolutionExplorer": false
 }
