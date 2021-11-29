@@ -110,9 +110,9 @@ namespace ServerlessBomberman.Model
             {
                 for (int y = 0; y < Map[0].Length; y++)
                 {
-                    if (Map[x][y] == EntityEnum.emptySpawn && !IsPlayerOnPosition(x, y))
+                    if (Map[y][x] == EntityEnum.emptySpawn && !IsPlayerOnPosition(x, y))
                     {
-                        return (x, y);
+                        return (y, x);
                     }
                 }
             }
