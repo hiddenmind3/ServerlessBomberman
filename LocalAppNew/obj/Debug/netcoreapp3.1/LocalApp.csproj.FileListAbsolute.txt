@@ -192,7 +192,6 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.AssemblyInfoInputs.cache
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.AssemblyInfo.cs
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.csproj.CoreCompileInputs.cache
-C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.csproj.CopyComplete
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.pdb
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.genruntimeconfig.cache

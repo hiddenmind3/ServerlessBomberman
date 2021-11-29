@@ -35,6 +35,57 @@ namespace ServerlessBomberman.Model
             Players.Remove(GetPlayer(input.PlayerName));
         }
 
+        public void CheckTime()
+        {
+            for (int x = 0; x < Map.Length; x++)
+            {
+                for (int y = 0; y < Map[0].Length; y++)
+                {
+                    if (Map[y][x].EntityType == EntityEnum.Bomb && Map[y][x].ExpirationTime < System.DateTime.Now)
+                    {
+                        ExplodeTile(y + 1, x);
+                        ExplodeTile(y - 1, x);
+                        ExplodeTile(y, x);
+                        ExplodeTile(y, x + 1);
+                        ExplodeTile(y, x - 1);
+                    } 
+                    else if (Map[y][x].EntityType == EntityEnum.Explosion)
+                    {
+                        if(Map[y][x].ExpirationTime < System.DateTime.Now)
+                        {
+                            RemoveExplosion(y, x);
+                        }
+
+                        foreach(Player p in Players)
+                        {
+                            if(p.IsAlive && p.XPosition == x && p.YPosition == y)
+                            {
+                                p.IsAlive = false;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        private void RemoveExplosion(int y, int x)
+        {
+            if (Map[y][x].EntityType != EntityEnum.UnbreakableWall)
+            {
+                Map[y][x].EntityType = EntityEnum.empty;
+            }
+        }
+
+        private void ExplodeTile(int y, int x)
+        {
+            if (Map[y][x].EntityType != EntityEnum.UnbreakableWall)
+            {
+                Map[y][x].EntityType = EntityEnum.Explosion;
+                Map[y][x].ExpirationTime = System.DateTime.Now.AddSeconds(1);
+            }
+        }
 
         private void ProcessPlayerInput(Input input, Player currentPlayer)
         {
@@ -131,7 +182,7 @@ namespace ServerlessBomberman.Model
         {
             foreach (Player player in Players)
             {
-                if (player.XPosition == x && player.YPosition == y)
+                if (player.IsAlive && player.XPosition == x && player.YPosition == y)
                 {
                     return true;
                 }
@@ -141,12 +192,13 @@ namespace ServerlessBomberman.Model
 
         private void PlaceBomb(int xPosition, int yPosition)
         {
-            Map[xPosition][yPosition].EntityType = EntityEnum.Bomb;
+            Map[yPosition][xPosition].EntityType = EntityEnum.Bomb;
+            Map[yPosition][xPosition].ExpirationTime = System.DateTime.Now.AddSeconds(5);
         }
 
         private bool CheckIfPositionFree(int xPosition, int yPosition)
         {
-            if(Map[xPosition][yPosition].EntityType == EntityEnum.empty || Map[xPosition][yPosition].EntityType == EntityEnum.emptySpawn)
+            if(Map[yPosition][xPosition].EntityType == EntityEnum.empty || Map[yPosition][xPosition].EntityType == EntityEnum.emptySpawn || Map[yPosition][xPosition].EntityType == EntityEnum.Explosion)
             {
                 return true;
             }

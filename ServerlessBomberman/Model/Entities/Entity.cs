@@ -8,7 +8,7 @@ namespace ServerlessBomberman.Model
     public class Entity
     {
         public EntityEnum EntityType { get; set; }
-        public int Timer { get; set; }
+        public DateTime ExpirationTime { get; set; }
 
         public Entity()
         {
