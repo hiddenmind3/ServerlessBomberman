@@ -21,6 +21,8 @@ namespace ServerlessBomberman.Functions
         {
             var gameId = new EntityId(nameof(Game), gameKey);
 
+            await client.SignalEntityAsync<IGame>(gameId, game => game.CheckTime());
+
             var state = await client.ReadEntityStateAsync<Game>(gameId);
 
             return new OkObjectResult(state.EntityState);
