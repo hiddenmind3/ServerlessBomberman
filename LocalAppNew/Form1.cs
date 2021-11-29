@@ -159,7 +159,7 @@ namespace LocalAppNew
             {
                 for (int j = 0; j < game.Map[i].Length; j++)
                 {
-                    EntityEnum en = game.Map[i][j];
+                    Entity en = game.Map[i][j];
 
                     if (en == null)
                     {
@@ -167,7 +167,7 @@ namespace LocalAppNew
                     }
                     else
                     {
-                        switch (en)
+                        switch (en.EntityType)
                         {
                             case EntityEnum.BreakableWall:
                                 g.FillRectangle(BreakableWallBrush, rectMap[i, j]);
@@ -181,7 +181,6 @@ namespace LocalAppNew
                             case EntityEnum.Explosion:
                                 g.FillRectangle(ExplosionBrush, rectMap[i, j]);
                                 break;
-                            case EntityEnum.empty:
                             default:
                                 g.FillRectangle(EmptyBrush, rectMap[i, j]);
                                 break;

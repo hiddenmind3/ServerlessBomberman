@@ -7,7 +7,7 @@ namespace ServerlessBomberman.Model
 {
     public class Game : IGame
     {
-        public EntityEnum[][] Map { get; set; }
+        public Entity[][] Map { get; set; }
         public List<Player> Players { get; set; }
 
         public void Reset()
@@ -71,14 +71,21 @@ namespace ServerlessBomberman.Model
 
         public void ResetMap()
         {
-            Map = new EntityEnum[7][] {
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.BreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.emptySpawn, EntityEnum.empty, EntityEnum.emptySpawn, EntityEnum.empty, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.BreakableWall, EntityEnum.empty, EntityEnum.BreakableWall, EntityEnum.empty, EntityEnum.BreakableWall, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.emptySpawn, EntityEnum.empty, EntityEnum.emptySpawn, EntityEnum.empty, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.BreakableWall, EntityEnum.empty, EntityEnum.empty, EntityEnum.UnbreakableWall},
-                new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall} };
+            Map = new Entity[7][] {
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), 
+                    new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.empty), 
+                    new Entity(EntityEnum.BreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.empty), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.emptySpawn),
+                    new Entity(EntityEnum.empty), new Entity(EntityEnum.emptySpawn), new Entity(EntityEnum.empty), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.BreakableWall), new Entity(EntityEnum.empty),
+                    new Entity(EntityEnum.BreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.BreakableWall), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.emptySpawn),
+                    new Entity(EntityEnum.empty), new Entity(EntityEnum.emptySpawn), new Entity(EntityEnum.empty), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.empty),
+                    new Entity(EntityEnum.BreakableWall), new Entity(EntityEnum.empty), new Entity(EntityEnum.empty), new Entity(EntityEnum.UnbreakableWall)},
+                new Entity[7]{ new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall),
+                    new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall) } };
         }
 
         private Player GetPlayer(string playerName)
@@ -110,7 +117,7 @@ namespace ServerlessBomberman.Model
             {
                 for (int y = 0; y < Map[0].Length; y++)
                 {
-                    if (Map[y][x] == EntityEnum.emptySpawn && !IsPlayerOnPosition(x, y))
+                    if (Map[y][x].EntityType == EntityEnum.emptySpawn && !IsPlayerOnPosition(x, y))
                     {
                         return (y, x);
                     }
@@ -134,12 +141,12 @@ namespace ServerlessBomberman.Model
 
         private void PlaceBomb(int xPosition, int yPosition)
         {
-            Map[xPosition][yPosition] = EntityEnum.Bomb;
+            Map[xPosition][yPosition].EntityType = EntityEnum.Bomb;
         }
 
         private bool CheckIfPositionFree(int xPosition, int yPosition)
         {
-            if(Map[xPosition][yPosition] == EntityEnum.empty || Map[xPosition][yPosition] == EntityEnum.emptySpawn)
+            if(Map[xPosition][yPosition].EntityType == EntityEnum.empty || Map[xPosition][yPosition].EntityType == EntityEnum.emptySpawn)
             {
                 return true;
             }
