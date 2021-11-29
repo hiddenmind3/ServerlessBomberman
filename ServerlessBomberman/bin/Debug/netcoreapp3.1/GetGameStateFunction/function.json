@@ -4,7 +4,7 @@
   "bindings": [
     {
       "type": "httpTrigger",
-      "route": "getgamestate/{entityKey}",
+      "route": "getgamestate/{gameKey}",
       "methods": [
         "get"
       ],

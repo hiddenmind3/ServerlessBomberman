@@ -9,5 +9,6 @@ namespace ServerlessBomberman.Model
     {
         public void ProcessInput(Input input);
         public void Reset();
+        public void RemovePlayer(Input input);
     }
 }
