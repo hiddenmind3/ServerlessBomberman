@@ -1,8 +1,6 @@
 ﻿using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ServerlessBomberman.Model
@@ -22,7 +20,7 @@ namespace ServerlessBomberman.Model
         {
             if (Map == null || Players == null) Reset();
 
-            Player currentPlayer = GetCurrentPlayer(input.PlayerName);
+            Player currentPlayer = GetPlayer(input.PlayerName);
 
             if (currentPlayer == null)
             {
@@ -30,6 +28,11 @@ namespace ServerlessBomberman.Model
             }
 
             ProcessPlayerInput(input, currentPlayer);
+        }
+
+        public void RemovePlayer(Input input)
+        {
+            Players.Remove(GetPlayer(input.PlayerName));
         }
 
 
@@ -78,7 +81,7 @@ namespace ServerlessBomberman.Model
                 new EntityEnum[7]{ EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall, EntityEnum.UnbreakableWall} };
         }
 
-        private Player GetCurrentPlayer(string playerName)
+        private Player GetPlayer(string playerName)
         {
             foreach (Player player in Players)
             {

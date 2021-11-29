@@ -12,12 +12,12 @@ namespace ServerlessBombermanTest
         private static readonly string resetURL = "https://serverlessbomberman.azurewebsites.net/api/reset/";
         private static readonly string inputURL = "https://serverlessbomberman.azurewebsites.net/api/input/";
         private static readonly string gamestateURL = "https://serverlessbomberman.azurewebsites.net/api/getgamestate/";
+        private static readonly string removePlayerURL = "https://serverlessbomberman.azurewebsites.net/api/remove/";
 
-        [Fact]
-        public async void TestGameInputFunctionUp()
+        public async void TestGameInputFunctionNoInput()
         {
             var client = new HttpClient();
-            Input input = new Input("player_00", InputEnum.Up);
+            Input input = new Input("player_00", InputEnum.None);
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             string gameKey = "testUp";
 
@@ -32,6 +32,32 @@ namespace ServerlessBombermanTest
 
             Game game = new Game();
             game.ProcessInput(input);
+            game.Players[0].XPosition = 1;
+            game.Players[0].YPosition = 1;
+
+            AssertGameEqual(game, jsonGame);
+        }
+
+        [Fact]
+        public async void TestGameInputFunctionUp()
+        {
+            var client = new HttpClient();
+            Input input = new Input("player_00", InputEnum.Up);
+            Input inputEmpty = new Input("player_00", InputEnum.None);
+            var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
+            string gameKey = "testUp";
+
+            _ = await client.GetAsync(resetURL + gameKey);
+            Thread.Sleep(1000);
+            _ = await client.PostAsync(inputURL + gameKey, content);
+            Thread.Sleep(1000);
+            var response = await client.GetAsync(gamestateURL + gameKey);
+
+            var gameJsonString = await response.Content.ReadAsStringAsync();
+            var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
+
+            Game game = new Game();
+            game.ProcessInput(inputEmpty);
             game.Players[0].XPosition = 2;
             game.Players[0].YPosition = 1;
 
@@ -43,6 +69,7 @@ namespace ServerlessBombermanTest
         {
             var client = new HttpClient();
             Input input = new Input("player_00", InputEnum.Down);
+            Input inputEmpty = new Input("player_00", InputEnum.None);
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             string gameKey = "testDown";
 
@@ -56,7 +83,7 @@ namespace ServerlessBombermanTest
             var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
 
             Game game = new Game();
-            game.ProcessInput(input);
+            game.ProcessInput(inputEmpty);
             game.Players[0].XPosition = 2;
             game.Players[0].YPosition = 3;
 
@@ -68,6 +95,7 @@ namespace ServerlessBombermanTest
         {
             var client = new HttpClient();
             Input input = new Input("player_00", InputEnum.Left);
+            Input inputEmpty = new Input("player_00", InputEnum.None);
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             string gameKey = "testLeft";
 
@@ -81,7 +109,7 @@ namespace ServerlessBombermanTest
             var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
 
             Game game = new Game();
-            game.ProcessInput(input);
+            game.ProcessInput(inputEmpty);
             game.Players[0].XPosition = 1;
             game.Players[0].YPosition = 2;
 
@@ -93,6 +121,7 @@ namespace ServerlessBombermanTest
         {
             var client = new HttpClient();
             Input input = new Input("player_00", InputEnum.Right);
+            Input inputEmpty = new Input("player_00", InputEnum.None);
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             string gameKey = "testRight";
 
@@ -106,7 +135,7 @@ namespace ServerlessBombermanTest
             var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
 
             Game game = new Game();
-            game.ProcessInput(input);
+            game.ProcessInput(inputEmpty);
             game.Players[0].XPosition = 3;
             game.Players[0].YPosition = 2;
 
@@ -118,6 +147,7 @@ namespace ServerlessBombermanTest
         {
             var client = new HttpClient();
             Input input = new Input("player_00", InputEnum.Bomb);
+            Input inputEmpty = new Input("player_00", InputEnum.None);
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             string gameKey = "testBomb";
 
@@ -131,10 +161,35 @@ namespace ServerlessBombermanTest
             var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
 
             Game game = new Game();
-            game.ProcessInput(input);
+            game.ProcessInput(inputEmpty);
             game.Map[2][2] = EntityEnum.Bomb;
             game.Players[0].XPosition = 2;
             game.Players[0].YPosition = 2;
+
+            AssertGameEqual(game, jsonGame);
+        }
+
+        [Fact]
+        public async void TestRemovePlayerFunction()
+        {
+            var client = new HttpClient();
+            Input inputEmpty = new Input("player_00", InputEnum.None);
+            var content = new StringContent(JsonConvert.SerializeObject(inputEmpty), Encoding.UTF8, "application/json");
+            string gameKey = "testRemovePlayer";
+
+            _ = await client.GetAsync(resetURL + gameKey);
+            Thread.Sleep(1000);
+            _ = await client.PostAsync(inputURL + gameKey, content);
+            Thread.Sleep(1000);
+            _ = await client.PostAsync(removePlayerURL + gameKey, content);
+            Thread.Sleep(1000);
+            var response = await client.GetAsync(gamestateURL + gameKey);
+
+            var gameJsonString = await response.Content.ReadAsStringAsync();
+            var jsonGame = JsonConvert.DeserializeObject<Game>(gameJsonString);
+
+            Game game = new Game();
+            game.Reset();
 
             AssertGameEqual(game, jsonGame);
         }

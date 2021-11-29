@@ -9651,11 +9651,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hirsc\\OneDrive\\Documents\\Code\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
+      "projectUniqueName": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
       "projectName": "LocalApp",
-      "projectPath": "C:\\Users\\hirsc\\OneDrive\\Documents\\Code\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
+      "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
       "packagesPath": "C:\\Users\\hirsc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hirsc\\OneDrive\\Documents\\Code\\ServerlessBomberman\\LocalAppNew\\obj\\",
+      "outputPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hirsc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9672,8 +9672,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\hirsc\\OneDrive\\Documents\\Code\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
-              "projectPath": "C:\\Users\\hirsc\\OneDrive\\Documents\\Code\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
+            "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
+              "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
             }
           }
         }

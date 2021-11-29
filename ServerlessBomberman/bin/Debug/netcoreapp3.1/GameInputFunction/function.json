@@ -4,7 +4,7 @@
   "bindings": [
     {
       "type": "httpTrigger",
-      "route": "input/{entityKey}",
+      "route": "input/{gameKey}",
       "methods": [
         "post"
       ],
