@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ServerlessBombermanTest": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
