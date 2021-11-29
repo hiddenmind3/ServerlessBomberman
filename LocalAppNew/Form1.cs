@@ -88,7 +88,7 @@ namespace LocalAppNew
             {
                 for (int j = 0; j < game.Map[i].Length; j++)
                 {
-                    rectMap[i, j] = new Rectangle(i * rectWidth, j * rectHeight, rectWidth, rectHeight);
+                    rectMap[j, i] = new Rectangle(i * rectWidth, j * rectHeight, rectWidth, rectHeight);
                 }
             }
         }
@@ -139,16 +139,19 @@ namespace LocalAppNew
             rectPlayer = new Rectangle[game.Players.Count];
             for (int i = 0; i < game.Players.Count; i++)
             {
-                rectPlayer[i] = new Rectangle(game.Players[i].XPosition * rectWidth, game.Players[i].YPosition * rectHeight, rectWidth, rectHeight);
+                if (game.Players[i].IsAlive)
+                {
+                    rectPlayer[i] = new Rectangle(game.Players[i].XPosition * rectWidth, game.Players[i].YPosition * rectHeight, rectWidth, rectHeight);
 
-                if (rectPlayer == null || rectPlayer[i] == null)
-                {
-                    throw new Exception("No Players found!");
-                }
-                else
-                {
-                    g.FillRectangle(PlayerBrush[i], rectPlayer[i]);
-                    g.DrawRectangle(Pens.Black, rectPlayer[i]);
+                    if (rectPlayer == null || rectPlayer[i] == null)
+                    {
+                        throw new Exception("No Players found!");
+                    }
+                    else
+                    {
+                        g.FillRectangle(PlayerBrush[i], rectPlayer[i]);
+                        g.DrawRectangle(Pens.Black, rectPlayer[i]);
+                    }
                 }
             }
         }
@@ -159,35 +162,34 @@ namespace LocalAppNew
             {
                 for (int j = 0; j < game.Map[i].Length; j++)
                 {
-                    EntityEnum en = game.Map[i][j];
+                    Entity en = game.Map[j][i];
 
                     if (en == null)
                     {
-                        g.FillRectangle(ErrorBrush, rectMap[i, j]);
+                        g.FillRectangle(ErrorBrush, rectMap[j, i]);
                     }
                     else
                     {
-                        switch (en)
+                        switch (en.EntityType)
                         {
                             case EntityEnum.BreakableWall:
-                                g.FillRectangle(BreakableWallBrush, rectMap[i, j]);
+                                g.FillRectangle(BreakableWallBrush, rectMap[j ,i]);
                                 break;
                             case EntityEnum.UnbreakableWall:
-                                g.FillRectangle(WallBrush, rectMap[i, j]);
+                                g.FillRectangle(WallBrush, rectMap[j, i]);
                                 break;
                             case EntityEnum.Bomb:
-                                g.FillRectangle(BombBrush, rectMap[i, j]);
+                                g.FillRectangle(BombBrush, rectMap[j, i]);
                                 break;
                             case EntityEnum.Explosion:
-                                g.FillRectangle(ExplosionBrush, rectMap[i, j]);
+                                g.FillRectangle(ExplosionBrush, rectMap[j, i]);
                                 break;
-                            case EntityEnum.empty:
                             default:
-                                g.FillRectangle(EmptyBrush, rectMap[i, j]);
+                                g.FillRectangle(EmptyBrush, rectMap[j, i]);
                                 break;
                         }
                     }
-                    g.DrawRectangle(Pens.Black, rectMap[i, j]);
+                    g.DrawRectangle(Pens.Black, rectMap[j, i]);
                 }
             }
         }

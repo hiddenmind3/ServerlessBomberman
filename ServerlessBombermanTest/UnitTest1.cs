@@ -9,17 +9,20 @@ namespace ServerlessBombermanTest
 {
     public class UnitTest1
     {
+        // https://serverlessbomberman.azurewebsites.net for Azure Testing
+        // http://localhost:7071 for Local Testing
         private static readonly string resetURL = "https://serverlessbomberman.azurewebsites.net/api/reset/";
         private static readonly string inputURL = "https://serverlessbomberman.azurewebsites.net/api/input/";
         private static readonly string gamestateURL = "https://serverlessbomberman.azurewebsites.net/api/getgamestate/";
         private static readonly string removePlayerURL = "https://serverlessbomberman.azurewebsites.net/api/remove/";
 
+        [Fact]
         public async void TestGameInputFunctionNoInput()
         {
             var client = new HttpClient();
             Input input_none_0 = new Input("player_00", InputEnum.None);
             var content_none_0 = new StringContent(JsonConvert.SerializeObject(input_none_0), Encoding.UTF8, "application/json");
-            string gameKey = "testUp";
+            string gameKey = "testNone";
 
             _ = await client.GetAsync(resetURL + gameKey);
             Thread.Sleep(1000);
@@ -32,8 +35,8 @@ namespace ServerlessBombermanTest
 
             Game game = new Game();
             game.ProcessInput(input_none_0);
-            game.Players[0].XPosition = 1;
-            game.Players[0].YPosition = 1;
+            game.Players[0].XPosition = 2;
+            game.Players[0].YPosition = 2;
 
             AssertGameEqual(game, jsonGame);
         }
@@ -162,7 +165,7 @@ namespace ServerlessBombermanTest
 
             Game game = new Game();
             game.ProcessInput(input_none_0);
-            game.Map[2][2] = EntityEnum.Bomb;
+            game.Map[2][2].EntityType = EntityEnum.Bomb;
             game.Players[0].XPosition = 2;
             game.Players[0].YPosition = 2;
 
@@ -197,7 +200,7 @@ namespace ServerlessBombermanTest
 
             Game game = new Game();
             game.ProcessInput(input_none_0);
-            game.Map[2][2] = EntityEnum.Bomb;
+            game.Map[2][2].EntityType = EntityEnum.Bomb;
             game.Players[0].XPosition = 1;
             game.Players[0].YPosition = 2;
 
@@ -273,7 +276,7 @@ namespace ServerlessBombermanTest
             {
                 for (int j = 0; j < expected.Map[i].Length; j++)
                 {
-                    Assert.Equal(expected.Map[i][j], actual.Map[i][j]);
+                    Assert.Equal(expected.Map[i][j].GetType(), actual.Map[i][j].GetType());
                 }
             }
             for (int i = 0; i < expected.Players.Count; i++)
