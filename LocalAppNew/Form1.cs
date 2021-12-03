@@ -41,7 +41,7 @@ namespace LocalAppNew
 
         public Form1()
         {
-
+            loginForm();
             game.ResetMap();
             client = new HttpClient();
             resetGameOnServer();
@@ -54,9 +54,25 @@ namespace LocalAppNew
 
             putInfo(serverURLInput + gameKey, JsonConvert.SerializeObject(new Input(playerKey, InputEnum.None)));
             Thread.Sleep(500);
+
             RT(() => {
                 updateMap();
             }, 10);
+        }
+
+        private void loginForm()
+        {
+            string value1 = "Username";
+            string value2 = "Server";
+            DialogResult d = LoginBox("Login", "Name and Server:", ref value1, ref value2);
+            if (d == DialogResult.OK)
+            {
+                playerKey = value1;
+                gameKey = value2;
+            } else if (d == DialogResult.Cancel)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
         }
 
         private void updateMap()
@@ -235,6 +251,53 @@ namespace LocalAppNew
                         await Task.Delay(TimeSpan.FromMilliseconds(millis));
                     }
                 });
+        }
+        public static DialogResult LoginBox(string title, string promptText, ref string valueUsername, ref string valueServer)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBoxUsername = new TextBox();
+            TextBox textBoxServer = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBoxUsername.Text = valueUsername;
+            textBoxServer.Text = valueServer;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Exit";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 10, 382, 13);
+            textBoxUsername.SetBounds(12, 36, 372, 20);
+            textBoxServer.SetBounds(12, 66, 372, 20);
+            buttonOk.SetBounds(173, 97, 75, 30);
+            buttonCancel.SetBounds(254, 97, 75, 30);
+
+            label.AutoSize = true;
+            textBoxUsername.Anchor = textBoxUsername.Anchor | AnchorStyles.Right;
+            textBoxServer.Anchor = textBoxServer.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 130);
+            form.Controls.AddRange(new Control[] { label, textBoxUsername, buttonOk, buttonCancel });
+            form.Controls.AddRange(new Control[] { label, textBoxServer, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            valueUsername = textBoxUsername.Text;
+            valueServer = textBoxServer.Text;
+            return dialogResult;
         }
     }
 }
