@@ -43,11 +43,7 @@ namespace ServerlessBomberman.Model
                 {
                     if (Map[y][x].EntityType == EntityEnum.Bomb && Map[y][x].ExpirationTime < System.DateTime.Now)
                     {
-                        ExplodeTile(y + 1, x);
-                        ExplodeTile(y - 1, x);
-                        ExplodeTile(y, x);
-                        ExplodeTile(y, x + 1);
-                        ExplodeTile(y, x - 1);
+                        CreateExplosion(y, x, 2);
                     } 
                     else if (Map[y][x].EntityType == EntityEnum.Explosion)
                     {
@@ -67,6 +63,18 @@ namespace ServerlessBomberman.Model
                 }
 
 
+            }
+        }
+
+        private void CreateExplosion(int y, int x, int size)
+        {
+            ExplodeTile(y, x);
+            for(int i = 1; i <= size; i++)
+            {
+                ExplodeTile(y + i, x);
+                ExplodeTile(y - i, x);
+                ExplodeTile(y, x + i);
+                ExplodeTile(y, x - i);
             }
         }
 
