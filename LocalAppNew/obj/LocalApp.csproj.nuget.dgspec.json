@@ -57,6 +57,9 @@
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.WindowsDesktop.App.WindowsForms": {
               "privateAssets": "none"
             }
@@ -111,7 +114,7 @@
             },
             "Microsoft.Azure.WebJobs.Extensions.DurableTask": {
               "target": "Package",
-              "version": "[2.1.1, )"
+              "version": "[2.6.0, )"
             },
             "Microsoft.NET.Sdk.Functions": {
               "target": "Package",

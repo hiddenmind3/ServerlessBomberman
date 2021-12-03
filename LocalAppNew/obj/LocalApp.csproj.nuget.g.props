@@ -18,5 +18,6 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Azure_WebJobs_Script_ExtensionsMetadataGenerator Condition=" '$(PkgMicrosoft_Azure_WebJobs_Script_ExtensionsMetadataGenerator)' == '' ">C:\Users\hirsc\.nuget\packages\microsoft.azure.webjobs.script.extensionsmetadatagenerator\1.2.0</PkgMicrosoft_Azure_WebJobs_Script_ExtensionsMetadataGenerator>
     <PkgMicrosoft_NET_Sdk_Functions Condition=" '$(PkgMicrosoft_NET_Sdk_Functions)' == '' ">C:\Users\hirsc\.nuget\packages\microsoft.net.sdk.functions\3.0.11</PkgMicrosoft_NET_Sdk_Functions>
+    <PkgMicrosoft_Azure_WebJobs_Extensions_DurableTask_Analyzers Condition=" '$(PkgMicrosoft_Azure_WebJobs_Extensions_DurableTask_Analyzers)' == '' ">C:\Users\hirsc\.nuget\packages\microsoft.azure.webjobs.extensions.durabletask.analyzers\0.4.1</PkgMicrosoft_Azure_WebJobs_Extensions_DurableTask_Analyzers>
   </PropertyGroup>
 </Project>

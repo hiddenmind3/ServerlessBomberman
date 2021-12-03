@@ -2,6 +2,8 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\ServerlessBomberman.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\ServerlessBomberman.deps.json
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\ServerlessBomberman.pdb
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Azure.Core.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Azure.Identity.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Dynamitey.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\ImpromptuInterface.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.ApplicationInsights.dll
@@ -16,6 +18,8 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Authentication.Core.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Authorization.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Hosting.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Http.dll
@@ -30,12 +34,16 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Routing.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Server.Kestrel.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Server.Kestrel.Core.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.WebUtilities.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.Documents.ChangeFeedProcessor.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.DocumentDB.Core.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\DurableTask.AzureStorage.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\DurableTask.Core.dll
-C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.Services.AppAuthentication.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Host.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.dll
@@ -43,6 +51,7 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.DurableTask.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.Http.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Host.Storage.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.Caching.Memory.dll
@@ -71,8 +80,7 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.Primitives.dll
-C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
-C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Identity.Client.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Net.Http.Headers.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Win32.SystemEvents.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\NCrontab.Signed.dll
@@ -81,8 +89,15 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Configuration.ConfigurationManager.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Diagnostics.PerformanceCounter.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Drawing.Common.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.IO.Pipelines.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Reactive.Core.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Reactive.Interfaces.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Reactive.Linq.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Reactive.PlatformServices.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Reactive.Providers.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Security.Permissions.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Text.Encodings.Web.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.Windows.Extensions.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.WindowsAzure.Storage.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\runtimes\win7-x64\native\Cosmos.CRTCompat.dll
@@ -93,3 +108,5 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\bin\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\System.Reactive.dll
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\PubTmp\Out\System.Reactive.xml

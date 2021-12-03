@@ -68,13 +68,13 @@ namespace ServerlessBomberman.Model
 
         private void CreateExplosion(int y, int x, int size)
         {
-            ExplodeTile(y, x);
+            ExplodeTile(y, x, size);
             for(int i = 1; i <= size; i++)
             {
-                ExplodeTile(y + i, x);
-                ExplodeTile(y - i, x);
-                ExplodeTile(y, x + i);
-                ExplodeTile(y, x - i);
+                ExplodeTile(y + i, x, size);
+                ExplodeTile(y - i, x, size);
+                ExplodeTile(y, x + i, size);
+                ExplodeTile(y, x - i, size);
             }
         }
 
@@ -86,12 +86,21 @@ namespace ServerlessBomberman.Model
             }
         }
 
-        private void ExplodeTile(int y, int x)
+        private void ExplodeTile(int y, int x, int size)
         {
             if (Map[y][x].EntityType != EntityEnum.UnbreakableWall)
             {
-                Map[y][x].EntityType = EntityEnum.Explosion;
-                Map[y][x].ExpirationTime = System.DateTime.Now.AddSeconds(1);
+                if (Map[y][x].EntityType == EntityEnum.Bomb)
+                {
+                    Map[y][x].EntityType = EntityEnum.Explosion;
+                    Map[y][x].ExpirationTime = System.DateTime.Now.AddSeconds(1);
+                    CreateExplosion(y, x, size);
+                } else
+                {
+                    Map[y][x].EntityType = EntityEnum.Explosion;
+                    Map[y][x].ExpirationTime = System.DateTime.Now.AddSeconds(1);
+                }
+                
             }
         }
 
