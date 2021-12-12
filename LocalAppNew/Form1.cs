@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Net.Http;
 using System.Text;
@@ -38,6 +39,13 @@ namespace LocalAppNew
 
         private Game game = new Game();
         private HttpClient client;
+
+        private InputEnum lastInput;
+        private int prevXPos;
+        private int prevYPos;
+        private EntityEnum prevEntity;
+        private Stopwatch stopwatch = new Stopwatch();
+        private IList<long> updateTimeList = new List<long>();
 
         public Form1()
         {
@@ -79,6 +87,52 @@ namespace LocalAppNew
         {
             getGameStateFromServer();
             Invalidate();
+        }
+
+        private void checkIfLastInputHasHappened()
+        {
+            try
+            {
+                switch (lastInput)
+                {
+                    case InputEnum.Up:
+                        if (game.GetPlayer(playerKey).YPosition == prevYPos - 1)
+                        {
+                            saveElapsedTimeUntilUpdate();
+                        }
+                        break;
+                    case InputEnum.Down:
+                        if (game.GetPlayer(playerKey).YPosition == prevYPos + 1)
+                        {
+                            saveElapsedTimeUntilUpdate();
+                        }
+                        break;
+                    case InputEnum.Left:
+                        if (game.GetPlayer(playerKey).XPosition == prevXPos - 1)
+                        {
+                            saveElapsedTimeUntilUpdate();
+                        }
+                        break;
+                    case InputEnum.Right:
+                        if (game.GetPlayer(playerKey).XPosition == prevXPos + 1)
+                        {
+                            saveElapsedTimeUntilUpdate();
+                        }
+                        break;
+                    case InputEnum.Bomb:
+                        if (prevEntity != EntityEnum.Bomb && game.Map[prevYPos][prevXPos].EntityType == EntityEnum.Bomb)
+                        {
+                            saveElapsedTimeUntilUpdate();
+                        }
+                        break;
+                }
+            } catch (NullReferenceException) { }
+        }
+
+        private void saveElapsedTimeUntilUpdate()
+        {
+            stopwatch.Stop();
+            updateTimeList.Add(stopwatch.ElapsedMilliseconds);
         }
 
         private void initRectangles()
@@ -125,18 +179,33 @@ namespace LocalAppNew
         {
             var response = await client.GetAsync(serverURLReset + gameKey);
         }
+
         private async void getGameStateFromServer()
         {
             var response = await client.GetAsync(serverURLGetGameState + gameKey);
 
             String jgame = await response.Content.ReadAsStringAsync();
 
+            setPrevValues();
+
             game = JsonConvert.DeserializeObject<Game>(jgame);
+
+            checkIfLastInputHasHappened();
+        }
+
+        private void setPrevValues()
+        {
+            Player currentPlayer = game.GetPlayer(playerKey);
+            prevXPos = currentPlayer.XPosition;
+            prevYPos = currentPlayer.YPosition;
+            prevEntity = game.Map[prevYPos][prevXPos].EntityType;
         }
 
         private void communicate(InputEnum inp)
         {
             putInfo(serverURLInput + gameKey, JsonConvert.SerializeObject(new Input(playerKey, inp)));
+            stopwatch.Restart();
+            lastInput = inp;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -148,6 +217,14 @@ namespace LocalAppNew
             drawRectanglesMap(g);
 
             drawRectanglesPlayer(g);
+
+            try
+            {
+                updateDelayText.Text = updateTimeList[updateTimeList.Count - 1].ToString() + " ms";
+            } catch (Exception)
+            {
+                updateDelayText.Text = "0 ms";
+            }
         }
 
         private void drawRectanglesPlayer(Graphics g)
@@ -298,6 +375,11 @@ namespace LocalAppNew
             valueUsername = textBoxUsername.Text;
             valueServer = textBoxServer.Text;
             return dialogResult;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

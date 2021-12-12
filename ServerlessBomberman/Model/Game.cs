@@ -139,7 +139,7 @@ namespace ServerlessBomberman.Model
                     new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall), new Entity(EntityEnum.UnbreakableWall) } };
         }
 
-        private Player GetPlayer(string playerName)
+        private Player GetOrCreatePlayer(string playerName)
         {
             foreach (Player player in Players)
             {
@@ -203,6 +203,18 @@ namespace ServerlessBomberman.Model
                 return true;
             }
             return false;
+        }
+
+        public Player GetPlayer(string name)
+        {
+            foreach(Player player in Players)
+            {
+                if(player.Name == name)
+                {
+                    return player;
+                }
+            }
+            return null;
         }
 
         [FunctionName(nameof(Game))]
