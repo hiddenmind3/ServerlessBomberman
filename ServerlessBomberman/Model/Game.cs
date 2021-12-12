@@ -20,7 +20,7 @@ namespace ServerlessBomberman.Model
         {
             if (Map == null || Players == null) Reset();
 
-            Player currentPlayer = GetPlayer(input.PlayerName);
+            Player currentPlayer = GetOrCreatePlayer(input.PlayerName);
 
             if (currentPlayer == null)
             {
@@ -32,7 +32,7 @@ namespace ServerlessBomberman.Model
 
         public void RemovePlayer(Input input)
         {
-            Players.Remove(GetPlayer(input.PlayerName));
+            Players.Remove(GetOrCreatePlayer(input.PlayerName));
         }
 
         public void CheckTime()
@@ -207,6 +207,7 @@ namespace ServerlessBomberman.Model
 
         public Player GetPlayer(string name)
         {
+            if(Players == null) { return null; }
             foreach(Player player in Players)
             {
                 if(player.Name == name)
