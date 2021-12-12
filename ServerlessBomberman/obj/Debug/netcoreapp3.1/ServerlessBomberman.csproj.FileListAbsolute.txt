@@ -303,3 +303,4 @@ C:\Users\R.N\source\repos\ServerlessBomberman\ServerlessBomberman\obj\Debug\netc
 C:\Users\R.N\source\repos\ServerlessBomberman\ServerlessBomberman\obj\Debug\netcoreapp3.1\ServerlessBomberman.csproj.CopyComplete
 C:\Users\R.N\source\repos\ServerlessBomberman\ServerlessBomberman\obj\Debug\netcoreapp3.1\ServerlessBomberman.dll
 C:\Users\R.N\source\repos\ServerlessBomberman\ServerlessBomberman\obj\Debug\netcoreapp3.1\ServerlessBomberman.pdb
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Debug\netcoreapp3.1\ServerlessBomberman.csproj.CopyComplete

@@ -9646,19 +9646,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\R.N\\.nuget\\packages\\": {}
+    "C:\\Users\\hirsc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
+      "projectUniqueName": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
       "projectName": "LocalApp",
-      "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
-      "packagesPath": "C:\\Users\\R.N\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\LocalAppNew\\obj\\",
+      "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\LocalApp.csproj",
+      "packagesPath": "C:\\Users\\hirsc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\LocalAppNew\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\R.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hirsc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9672,8 +9672,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
-              "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
+            "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
+              "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
             }
           }
         }
