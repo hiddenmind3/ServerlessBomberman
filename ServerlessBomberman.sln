@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalApp", "LocalAppNew\Loc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBombermanTest", "ServerlessBombermanTest\ServerlessBombermanTest.csproj", "{DBFE98E8-3576-4AF9-9EB4-172C86940325}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceTesting", "PerformanceTesting\PerformanceTesting.csproj", "{3D2A2619-6968-432E-AD94-BD2400BE55EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DBFE98E8-3576-4AF9-9EB4-172C86940325}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFE98E8-3576-4AF9-9EB4-172C86940325}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFE98E8-3576-4AF9-9EB4-172C86940325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2A2619-6968-432E-AD94-BD2400BE55EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2A2619-6968-432E-AD94-BD2400BE55EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2A2619-6968-432E-AD94-BD2400BE55EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2A2619-6968-432E-AD94-BD2400BE55EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

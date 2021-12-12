@@ -199,3 +199,4 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomber
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\ServerlessBomberman.csproj.CoreCompileInputs.cache
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\ServerlessBomberman.dll
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\ServerlessBomberman.pdb
+C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\ServerlessBomberman\obj\Release\netcoreapp3.1\ServerlessBomberman.csproj.CopyComplete
