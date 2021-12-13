@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace PerformanceTesting
@@ -63,7 +62,7 @@ namespace PerformanceTesting
                 stopwatch.Stop();
                 times.Add(stopwatch.ElapsedMilliseconds);
             }
-            Debug.WriteLine("\nTime Reset = " + Queryable.Average(times.AsQueryable()) + "\n\n");
+            Debug.WriteLine("\nTime GetGameState = " + Queryable.Average(times.AsQueryable()) + "\n\n");
         }
 
         private static void performanceTestReset()
