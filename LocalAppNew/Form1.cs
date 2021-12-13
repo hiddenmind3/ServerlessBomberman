@@ -89,44 +89,41 @@ namespace LocalAppNew
             Invalidate();
         }
 
-        private void checkIfLastInputHasHappened()
+        private void calculateTimeUntilInputProccessed()
         {
-            try
+            switch (lastInput)
             {
-                switch (lastInput)
-                {
-                    case InputEnum.Up:
-                        if (game.GetPlayer(playerKey).YPosition == prevYPos - 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Down:
-                        if (game.GetPlayer(playerKey).YPosition == prevYPos + 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Left:
-                        if (game.GetPlayer(playerKey).XPosition == prevXPos - 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Right:
-                        if (game.GetPlayer(playerKey).XPosition == prevXPos + 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Bomb:
-                        if (prevEntity != EntityEnum.Bomb && game.Map[prevYPos][prevXPos].EntityType == EntityEnum.Bomb)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                }
-            } catch (NullReferenceException) { }
+                case InputEnum.Up:
+                    if (game.GetPlayer(playerKey).YPosition == prevYPos - 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Down:
+                    if (game.GetPlayer(playerKey).YPosition == prevYPos + 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Left:
+                    if (game.GetPlayer(playerKey).XPosition == prevXPos - 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Right:
+                    if (game.GetPlayer(playerKey).XPosition == prevXPos + 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Bomb:
+                    if (prevEntity != EntityEnum.Bomb && game.Map[prevYPos][prevXPos].EntityType == EntityEnum.Bomb)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+            }
         }
 
         private void saveElapsedTimeUntilUpdate()
@@ -186,11 +183,11 @@ namespace LocalAppNew
 
             String jgame = await response.Content.ReadAsStringAsync();
 
-            setPrevValues();
+            if(game != null) setPrevValues();
 
             game = JsonConvert.DeserializeObject<Game>(jgame);
 
-            checkIfLastInputHasHappened();
+            if(game != null) calculateTimeUntilInputProccessed();
         }
 
         private void setPrevValues()
