@@ -126,6 +126,7 @@ namespace LocalAppNew
 
         private void calculateTimeUntilInputProccessed()
         {
+            if (game.GetPlayer(playerKey) == null) return;
             switch (lastInput)
             {
                 case InputEnum.Up:
