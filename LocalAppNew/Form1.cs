@@ -107,7 +107,6 @@ namespace LocalAppNew
             {
                 playerKey = value1;
                 gameKey = value2;
-                resetGameOnServer();
             } else if (d == DialogResult.Cancel)
             {
                 System.Windows.Forms.Application.Exit();
@@ -115,6 +114,7 @@ namespace LocalAppNew
             {
                 playerKey = value1;
                 gameKey = value2;
+                resetGameOnServer();
             }
         }
 
