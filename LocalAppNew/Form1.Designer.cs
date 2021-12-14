@@ -20,6 +20,11 @@ namespace LocalAppNew
             }
             base.Dispose(disposing);
         }
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
+        {
+            exitGame();
+        }
+
 
         #region Windows Form Designer generated code
 

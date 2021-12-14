@@ -196,3 +196,13 @@ C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.pdb
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.genruntimeconfig.cache
 C:\Users\hirsc\Documents\GitHub\hiddenmind3\ServerlessBomberman\LocalAppNew\obj\Debug\netcoreapp3.1\LocalApp.csproj.CopyComplete
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\Bomb.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\BreakableWall.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\Error.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\Explosion.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\Floor.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\SolidWall.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\PlayerBlue.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\PlayerGreen.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\PlayerRed.png
+C:\Users\R.N\source\repos\ServerlessBomberman\LocalAppNew\bin\Debug\netcoreapp3.1\Images\PlayerYellow.png

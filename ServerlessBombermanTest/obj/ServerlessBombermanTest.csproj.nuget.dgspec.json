@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj": {}
+    "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj": {
+    "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj",
+        "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj",
         "projectName": "ServerlessBombermanTest",
-        "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj",
-        "packagesPath": "C:\\Users\\hirsc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBombermanTest\\obj\\",
+        "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBombermanTest\\ServerlessBombermanTest.csproj",
+        "packagesPath": "C:\\Users\\R.N\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBombermanTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hirsc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\R.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
-                "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
+              "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
+                "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj"
               }
             }
           }
@@ -84,17 +84,17 @@
         }
       }
     },
-    "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
+    "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
+        "projectUniqueName": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
         "projectName": "ServerlessBomberman",
-        "projectPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
-        "packagesPath": "C:\\Users\\hirsc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hirsc\\Documents\\GitHub\\hiddenmind3\\ServerlessBomberman\\ServerlessBomberman\\obj\\",
+        "projectPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\ServerlessBomberman.csproj",
+        "packagesPath": "C:\\Users\\R.N\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\R.N\\source\\repos\\ServerlessBomberman\\ServerlessBomberman\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hirsc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\R.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
