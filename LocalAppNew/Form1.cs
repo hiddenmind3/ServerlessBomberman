@@ -230,6 +230,7 @@ namespace LocalAppNew
         private void setPrevValues()
         {
             Player currentPlayer = game.GetPlayer(playerKey);
+            if (currentPlayer == null) return;
             prevXPos = currentPlayer.XPosition;
             prevYPos = currentPlayer.YPosition;
             prevEntity = game.Map[prevYPos][prevXPos].EntityType;
