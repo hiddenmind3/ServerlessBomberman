@@ -103,18 +103,25 @@ namespace LocalAppNew
             string value1 = "Username";
             string value2 = "Server";
             DialogResult d = LoginBox("Login", "Name and Server:", ref value1, ref value2);
+            
             if (d == DialogResult.OK)
             {
                 playerKey = value1;
                 gameKey = value2;
             } else if (d == DialogResult.Cancel)
             {
+                exitGame();
+                Environment.Exit(1);
                 System.Windows.Forms.Application.Exit();
             } else if (d == DialogResult.Yes)
             {
                 playerKey = value1;
                 gameKey = value2;
                 resetGameOnServer();
+            } else
+            {
+                exitGame();
+                System.Windows.Forms.Application.Exit();
             }
         }
 
@@ -248,12 +255,13 @@ namespace LocalAppNew
             base.OnPaint(e);
 
             Graphics g = e.Graphics;
+            
+            setDelayText();
 
             drawRectanglesMap(g);
 
             drawRectanglesPlayer(g);
 
-            setDelayText();
         }
 
         private void setDelayText()
@@ -261,7 +269,9 @@ namespace LocalAppNew
             if(updateTimeList != null && updateTimeList.Count > 0)
             {
                 updateDelayText.Text = updateTimeList[updateTimeList.Count - 1].ToString() + " ms";
-            } else
+                //Debug.Write(updateDelayText.Text+" "+updateDelayText.Name);
+            }
+            else
             {
                 updateDelayText.Text = "0 ms";
             }
@@ -353,6 +363,7 @@ namespace LocalAppNew
                 {
                     communicate(InputEnum.Bomb);
                 }
+
                 updateMap();
                 e.Handled = true;
             }
