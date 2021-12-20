@@ -40,13 +40,14 @@ namespace LocalAppNew
             // updateDelayText
             // 
             this.updateDelayText.AutoSize = true;
+            this.updateDelayText.BackColor = System.Drawing.Color.Transparent;
+            this.updateDelayText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.updateDelayText.ForeColor = System.Drawing.Color.Red;
             this.updateDelayText.Location = new System.Drawing.Point(12, 9);
             this.updateDelayText.Name = "updateDelayText";
-            this.updateDelayText.Size = new System.Drawing.Size(32, 15);
-            this.updateDelayText.TabIndex = 1;
+            this.updateDelayText.Size = new System.Drawing.Size(37, 17);
+            this.updateDelayText.TabIndex = 3;
             this.updateDelayText.Text = "0 ms";
-            this.updateDelayText.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 

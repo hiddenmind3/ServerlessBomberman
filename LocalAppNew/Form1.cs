@@ -253,10 +253,15 @@ namespace LocalAppNew
 
             drawRectanglesPlayer(g);
 
-            try
+            setDelayText();
+        }
+
+        private void setDelayText()
+        {
+            if(updateTimeList != null && updateTimeList.Count > 0)
             {
                 updateDelayText.Text = updateTimeList[updateTimeList.Count - 1].ToString() + " ms";
-            } catch (Exception)
+            } else
             {
                 updateDelayText.Text = "0 ms";
             }
