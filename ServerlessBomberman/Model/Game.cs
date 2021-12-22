@@ -20,7 +20,7 @@ namespace ServerlessBomberman.Model
         {
             if (Map == null || Players == null) Reset();
 
-            Player currentPlayer = GetPlayer(input.PlayerName);
+            Player currentPlayer = GetOrCreatePlayer(input.PlayerName);
 
             if (currentPlayer == null)
             {
