@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,26 +15,30 @@ namespace LocalAppNew
 {
     public partial class Form1 : Form
     {
-        private SolidBrush WallBrush = new SolidBrush(Color.Black);
-        private SolidBrush BreakableWallBrush = new SolidBrush(Color.Gray);
-        private SolidBrush BombBrush = new SolidBrush(Color.Red);
-        private SolidBrush ExplosionBrush = new SolidBrush(Color.Yellow);
-        private SolidBrush EmptyBrush = new SolidBrush(Color.White);
-        private SolidBrush ErrorBrush = new SolidBrush(Color.Magenta);
-        private SolidBrush[] PlayerBrush = new SolidBrush[] { new SolidBrush(Color.DarkBlue), new SolidBrush(Color.Blue), new SolidBrush(Color.LightBlue) };
+
+        private int rectWidth = 111;
+        private int rectHeight = 111;
+
+        private TextureBrush[] PlayerBrush = new TextureBrush[] { new TextureBrush(Image.FromFile(@"Images\\PlayerBlue.png"), System.Drawing.Drawing2D.WrapMode.Tile), new TextureBrush(Image.FromFile(@"Images\\PlayerGreen.png"), System.Drawing.Drawing2D.WrapMode.Tile), new TextureBrush(Image.FromFile(@"Images\\PlayerRed.png"), System.Drawing.Drawing2D.WrapMode.Tile), new TextureBrush(Image.FromFile(@"Images\\PlayerYellow.png"), System.Drawing.Drawing2D.WrapMode.Tile) };
+        private TextureBrush WallBrush = new TextureBrush(Image.FromFile(@"Images\\SolidWall.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        private TextureBrush BreakableWallBrush = new TextureBrush(Image.FromFile(@"Images\\BreakableWall.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        private TextureBrush BombBrush = new TextureBrush(Image.FromFile(@"Images\\Bomb.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        private TextureBrush ExplosionBrush = new TextureBrush(Image.FromFile(@"Images\\Explosion.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        private TextureBrush EmptyBrush = new TextureBrush(Image.FromFile(@"Images\\Floor.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        private TextureBrush ErrorBrush = new TextureBrush(Image.FromFile(@"Images\\Error.png"), System.Drawing.Drawing2D.WrapMode.Tile);
+        
         private static Boolean gameIsRunning = true;
         
         private Rectangle[] rectPlayer;
         private Rectangle[,] rectMap;
 
-        private int rectWidth = 111;
-        private int rectHeight = 111;
         
         private static String serverURL = "https://serverlessbomberman.azurewebsites.net/api/";
         private static String serverURLReset = serverURL+"reset/";
         private static String serverURLInput = serverURL+"input/";
-        private static String serverURLGetGameState = serverURL+"getgamestate/";
-
+        private static String serverURLGetGameState = serverURL + "getgamestate/";
+        private static String serverURLRemovePlayer = serverURL + "remove/";
+        
         private String gameKey = "testKey";
         private String playerKey = "playerKey";
 
@@ -49,10 +54,12 @@ namespace LocalAppNew
 
         public Form1()
         {
+            setUpImages();
+
+            client = new HttpClient();
+
             loginForm();
             game.ResetMap();
-            client = new HttpClient();
-            resetGameOnServer();
 
             initPlayers();
 
@@ -67,18 +74,53 @@ namespace LocalAppNew
                 updateMap();
             }, 10);
         }
+        
+        private void setUpImages()
+        {
+            float fw = rectWidth / 100f;
+            float fh = rectHeight / 100f;
+
+            WallBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            BreakableWallBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            BombBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            EmptyBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            ExplosionBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            ErrorBrush.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+
+            foreach (TextureBrush b in PlayerBrush)
+            {
+                b.ScaleTransform(fw, fh, System.Drawing.Drawing2D.MatrixOrder.Prepend);
+            }
+        }
+
+        protected void exitGame()
+        {
+            putInfo(serverURLRemovePlayer + gameKey, JsonConvert.SerializeObject(new Input(playerKey, InputEnum.None)));
+        }
 
         private void loginForm()
         {
             string value1 = "Username";
             string value2 = "Server";
             DialogResult d = LoginBox("Login", "Name and Server:", ref value1, ref value2);
+            
             if (d == DialogResult.OK)
             {
                 playerKey = value1;
                 gameKey = value2;
             } else if (d == DialogResult.Cancel)
             {
+                exitGame();
+                Environment.Exit(1);
+                System.Windows.Forms.Application.Exit();
+            } else if (d == DialogResult.Yes)
+            {
+                playerKey = value1;
+                gameKey = value2;
+                resetGameOnServer();
+            } else
+            {
+                exitGame();
                 System.Windows.Forms.Application.Exit();
             }
         }
@@ -89,44 +131,42 @@ namespace LocalAppNew
             Invalidate();
         }
 
-        private void checkIfLastInputHasHappened()
+        private void calculateTimeUntilInputProccessed()
         {
-            try
+            if (game.GetPlayer(playerKey) == null) return;
+            switch (lastInput)
             {
-                switch (lastInput)
-                {
-                    case InputEnum.Up:
-                        if (game.GetPlayer(playerKey).YPosition == prevYPos - 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Down:
-                        if (game.GetPlayer(playerKey).YPosition == prevYPos + 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Left:
-                        if (game.GetPlayer(playerKey).XPosition == prevXPos - 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Right:
-                        if (game.GetPlayer(playerKey).XPosition == prevXPos + 1)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                    case InputEnum.Bomb:
-                        if (prevEntity != EntityEnum.Bomb && game.Map[prevYPos][prevXPos].EntityType == EntityEnum.Bomb)
-                        {
-                            saveElapsedTimeUntilUpdate();
-                        }
-                        break;
-                }
-            } catch (NullReferenceException) { }
+                case InputEnum.Up:
+                    if (game.GetPlayer(playerKey).YPosition == prevYPos - 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Down:
+                    if (game.GetPlayer(playerKey).YPosition == prevYPos + 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Left:
+                    if (game.GetPlayer(playerKey).XPosition == prevXPos - 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Right:
+                    if (game.GetPlayer(playerKey).XPosition == prevXPos + 1)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+                case InputEnum.Bomb:
+                    if (prevEntity != EntityEnum.Bomb && game.Map[prevYPos][prevXPos].EntityType == EntityEnum.Bomb)
+                    {
+                        saveElapsedTimeUntilUpdate();
+                    }
+                    break;
+            }
         }
 
         private void saveElapsedTimeUntilUpdate()
@@ -174,6 +214,7 @@ namespace LocalAppNew
         {
             _ = await client.PostAsync(url, new StringContent(message, Encoding.UTF8, "application/json"));
         }
+        
 
         private async void resetGameOnServer()
         {
@@ -186,16 +227,17 @@ namespace LocalAppNew
 
             String jgame = await response.Content.ReadAsStringAsync();
 
-            setPrevValues();
+            if(game != null) setPrevValues();
 
             game = JsonConvert.DeserializeObject<Game>(jgame);
 
-            checkIfLastInputHasHappened();
+            if(game != null) calculateTimeUntilInputProccessed();
         }
 
         private void setPrevValues()
         {
             Player currentPlayer = game.GetPlayer(playerKey);
+            if (currentPlayer == null) return;
             prevXPos = currentPlayer.XPosition;
             prevYPos = currentPlayer.YPosition;
             prevEntity = game.Map[prevYPos][prevXPos].EntityType;
@@ -213,15 +255,23 @@ namespace LocalAppNew
             base.OnPaint(e);
 
             Graphics g = e.Graphics;
+            
+            setDelayText();
 
             drawRectanglesMap(g);
 
             drawRectanglesPlayer(g);
 
-            try
+        }
+
+        private void setDelayText()
+        {
+            if(updateTimeList != null && updateTimeList.Count > 0)
             {
                 updateDelayText.Text = updateTimeList[updateTimeList.Count - 1].ToString() + " ms";
-            } catch (Exception)
+                //Debug.Write(updateDelayText.Text+" "+updateDelayText.Name);
+            }
+            else
             {
                 updateDelayText.Text = "0 ms";
             }
@@ -243,7 +293,7 @@ namespace LocalAppNew
                     else
                     {
                         g.FillRectangle(PlayerBrush[i], rectPlayer[i]);
-                        g.DrawRectangle(Pens.Black, rectPlayer[i]);
+                        //g.DrawRectangle(Pens.Black, rectPlayer[i]);
                     }
                 }
             }
@@ -282,7 +332,7 @@ namespace LocalAppNew
                                 break;
                         }
                     }
-                    g.DrawRectangle(Pens.Black, rectMap[j, i]);
+                    //g.DrawRectangle(Pens.Black, rectMap[j, i]);
                 }
             }
         }
@@ -313,6 +363,7 @@ namespace LocalAppNew
                 {
                     communicate(InputEnum.Bomb);
                 }
+
                 updateMap();
                 e.Handled = true;
             }
@@ -336,40 +387,40 @@ namespace LocalAppNew
             TextBox textBoxUsername = new TextBox();
             TextBox textBoxServer = new TextBox();
             Button buttonOk = new Button();
-            Button buttonCancel = new Button();
+            Button buttonReset = new Button();
 
             form.Text = title;
             label.Text = promptText;
             textBoxUsername.Text = valueUsername;
             textBoxServer.Text = valueServer;
 
-            buttonOk.Text = "OK";
-            buttonCancel.Text = "Exit";
+            buttonOk.Text = "Join";
+            buttonReset.Text = "New Game";
             buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
+            buttonReset.DialogResult = DialogResult.Yes;
 
             label.SetBounds(9, 10, 382, 13);
             textBoxUsername.SetBounds(12, 36, 372, 20);
             textBoxServer.SetBounds(12, 66, 372, 20);
             buttonOk.SetBounds(173, 97, 75, 30);
-            buttonCancel.SetBounds(254, 97, 75, 30);
+            buttonReset.SetBounds(254, 97, 75, 30);
 
             label.AutoSize = true;
             textBoxUsername.Anchor = textBoxUsername.Anchor | AnchorStyles.Right;
             textBoxServer.Anchor = textBoxServer.Anchor | AnchorStyles.Right;
             buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonReset.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-            form.ClientSize = new Size(396, 130);
-            form.Controls.AddRange(new Control[] { label, textBoxUsername, buttonOk, buttonCancel });
-            form.Controls.AddRange(new Control[] { label, textBoxServer, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.ClientSize = new System.Drawing.Size(396, 130);
+            form.Controls.AddRange(new Control[] { label, textBoxUsername, buttonOk, buttonReset });
+            form.Controls.AddRange(new Control[] { label, textBoxServer, buttonOk, buttonReset });
+            form.ClientSize = new System.Drawing.Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;
             form.MaximizeBox = false;
             form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
+            form.CancelButton = buttonReset;
 
             DialogResult dialogResult = form.ShowDialog();
             valueUsername = textBoxUsername.Text;
