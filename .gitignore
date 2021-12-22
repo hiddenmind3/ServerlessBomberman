@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+LocalAppNew/obj/Debug/netcoreapp3.1/LocalApp.csproj.AssemblyReference.cache
